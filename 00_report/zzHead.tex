@@ -1,0 +1,291 @@
+%~ \documentclass[pdftex,12pt,a4paper,twoside]{book}
+%~ \documentclass[pdftex,11pt,b5paper,twoside,draft]{book}
+% \documentclass[pdftex,12pt,a4paper,twoside]{article}
+\documentclass[pdftex,12pt,a4paper,oneside]{article}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,bm,array,mathtools}
+\usepackage[style=numeric,backend=biber,citestyle=chem-acs,natbib=true]{biblatex}
+\usepackage[czech,british]{babel}
+% \usepackage[british]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fix-cm}
+\usepackage{fancyhdr} %zahlavi a zapati
+\usepackage[top=25.0mm, bottom=25.0mm, left=28.0mm, right=28.0mm, bindingoffset=10mm]{geometry}
+%~\usepackage[top=25.4mm, bottom=25.4mm, inner=20.0mm, outer=20.0mm,bindingoffset=10mm,heightrounded,]{geometry}
+\usepackage{pdflscape}
+%~ \usepackage{afterpage}
+\usepackage{caption,float}
+\usepackage[pdftex]{graphicx}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{wrapfig}
+\usepackage{bbold}
+%~\usepackage{subfig}
+%~\usepackage{subfigure}
+\usepackage{xcolor}
+\usepackage{lmodern} %possible to remove on linux
+\usepackage{subcaption} %windows
+%~\usepackage{cm-super}%windows
+ %~\usepackage{subfig} %windows nefunguje
+\usepackage{chemformula}
+\usepackage{algorithm}
+% ~\usepackage{algorithmic}
+\usepackage{stmaryrd}
+\usepackage[export]{adjustbox}
+% \usepackage{algorithmic}
+\usepackage{algpseudocode}
+\usepackage{longtable}
+
+
+
+\makeatletter\AtBeginDocument{\let\@elt\relax}\makeatother
+
+%~\usepackage{pstricks}
+%~\usepackage{auto-pst-pdf}
+
+% CUSTOM COLORS
+\definecolor{schoolColor}{HTML}{e74011} %UCT RED
+%~ \definecolor{chaptergrey}{HTML}{FDB515} % chapter numbers
+\definecolor{grey}{HTML}{b9b8b3} % grey
+\definecolor{myPink}{HTML}{d947c8}
+\definecolor{walls}{HTML}{ae7354}
+\definecolor{cyl}{HTML}{b10000}
+\definecolor{coat}{HTML}{0000a0}
+\definecolor{violet}{HTML}{976bd9} % grey
+%~\definecolor{chaptergrey}{HTML}{976bd9} % chapter numbers
+\definecolor{chaptergrey}{rgb}{0.6,0.6,0.6} % chapter numbers
+%~ \definecolor{myBlue1}{RGB}{0,165,211} % chapter numbers
+%~ \definecolor{myBlue1}{RGB}{35,31,32} % school black
+%~ \definecolor{myBlue1}{HTML}{4c4c4c} % school black
+%~ \definecolor{myBlue1}{cmyk}{0.77,0.36,0,0.51}
+\definecolor{myBlue1}{HTML}{2c476b}% my actual color
+\newcommand\crule[3][black]{\textcolor{#1}{\rule{#2}{#3}}}
+\newcommand{\missRef}{\textcolor{blue}{[REF]}}
+\newcommand{\CO}{$\mathrm{CO}$}
+\newcommand{\COO}{$\mathrm{CO}_{2}$}
+\newcommand{\OO}{$\mathrm{O}_{2}$ }
+\newcommand{\NO}{$\mathrm{NO}$}
+\newcommand{\NNO}{$\mathrm{N}_{2}\mathrm{O}$}
+\newcommand{\NN}{$\mathrm{N}_{2}$}
+\newcommand\CFL{\mbox{\textrm{Co}}}
+%~ \usepackage{sectsty}
+%~ \sectionfont{\color{myBlue1}}
+%~ \subsectionfont{\color{myBlue1}}
+%~ \subsubsectionfont{\color{myBlue1}}
+%~ \paragraphfont{\color{myBlue1}}
+
+\usepackage[theorems,skins]{tcolorbox}
+\tcbset{highlight math style={enhanced,
+  colframe=myBlue1,colback=white,arc=0pt,boxrule=1pt}}
+
+%~ \usepackage{titlesec}
+%~ \titleformat{\section}
+%~ {\color{red}\normalfont\Large\bfseries}
+%~ {\color{red}\thesection}{1em}{}
+
+% REFERENCING
+%~ \usepackage[square,sort,comma,numbers]{natbib}
+%~ \usepackage[style=numeric,backend=bibtex,natbib=true]{biblatex}
+%~\usepackage[style=numeric,backend=biber,style=chem-acs,natbib=true]{biblatex}
+
+%~\usepackage[style=numeric,backend=biber,natbib=true]{biblatex}
+\bibliography{./10_bibFiles/books.bib,./10_bibFiles/references.bib,10_bibFiles/others.bib,10_bibFiles/theses.bib}
+% \bibliography{./10_bibFiles/references.bib}
+%~\bibliography{./10_bibFiles/books.bib,./10_bibFiles/papers.bib,10_bibFiles/others.bib}
+
+%~ \usepackage{enumitem}
+%~ \usepackage{float}
+\usepackage{booktabs,multirow,bigdelim,tabularx}
+%~ \usepackage{rotatingn}
+\usepackage{paralist}
+
+% ALGORITHMS
+%~\usepackage{algorithm}
+%~\usepackage{algcompatible}
+ %~\usepackage{algpseudocode}
+ %~\usepackage{algorithmic}
+%~\renewcommand{\algorithmicforall}{\textbf{for each}}
+
+% stuff due to algocompatible
+%~\algnewcommand\algorithmicreturn{\textbf{return} }
+%~\algnewcommand\RETURN{\State \algorithmicreturn}%
+%~\newcommand{\TO}{\textbf{to }}
+
+%~\algnewcommand{\IIf}[1]{\State\algorithmicif\ #1\ \algorithmicthen}
+%~\algnewcommand{\EndIIf}{\unskip\ \algorithmicend\ \algorithmicif}
+
+%~\makeatletter
+%~\let\OldStatex\Statex
+%~\renewcommand{\Statex}[1][3]{%
+  %~\setlength\@tempdima{\algorithmicindent}%
+  %~\OldStatex\hskip\dimexpr#1\@tempdima\relax}
+%~\makeatother
+
+%~ % PGFPLOTS AND OTHER GRAPHICS
+\usepackage{nomencl}
+\makenomenclature
+\usepackage{pgfplotstable}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.9}
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{positioning, bending}
+\usetikzlibrary{patterns}
+\usetikzlibrary{matrix}
+\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{decorations.pathreplacing}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing,calc}
+
+
+% \usetikzlibrary{external}
+% \tikzexternalize[prefix=figures/]
+
+
+\usepackage{url,etoolbox}
+\preto\tabular{\shorthandoff{-}}% hack to enable cmidrule in tabs for czech/slovak
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage{forloop}
+
+% for plots
+\definecolor{red}{RGB}{240,0,0}
+\definecolor{green}{RGB}{0,220,0}
+\definecolor{blue}{RGB}{100,100,220}
+\definecolor{yellow}{RGB}{255,198,0}
+\DeclareMathOperator{\Tr}{Tr}
+
+\tikzstyle{startstop} = [line width = 0.75pt, ellipse, minimum width = 1cm, minimum height = 1.5cm, text centered, draw=black]
+\tikzstyle{myStep} = [line width = 0.75pt, rectangle, rounded corners, minimum width = 2cm, minimum height = 0.5cm, text centered, draw=black]
+\tikzstyle{counter} = [line width = 0.75pt, rectangle, dash pattern = on 4pt off 2pt, minimum width = 1cm, minimum height = 0.5cm, text centered, draw=black]
+\tikzstyle{special} = [line width = 0.75pt, rectangle, rounded corners = 0.5cm, minimum width = 3.2cm, minimum height = 1.3cm, text centered, draw=black]
+\tikzstyle{myText} = [line width = 0.75pt, rectangle, align = center, fill opacity = 0.0, text opacity = 1.0]
+\tikzstyle{neuron} = [line width = 0.75pt, circle, minimum width = 0.8cm, minimum height = 0.8cm, text centered, draw=black]
+
+\tikzstyle{arrow} = [line width = 0.6pt, ->, >=Stealth, shorten >= 0.05cm]
+\tikzstyle{arrow2} = [line width = 0.6pt, dash pattern = on 5pt off 2pt, ->, >=Stealth, shorten >= 0.07cm, draw=yellow]
+\tikzstyle{line} = [line width = 0.6pt, -]
+\tikzstyle{inArrow} = [line width = 0.6pt, <-, >=Stealth, shorten <=0.07cm]
+\tikzstyle{outArrow} = [line width = 0.6pt, ->, >=Stealth]
+
+%~ %%% if you have some necessary personal definitions or packages to load, put it here
+\def\myLogos{00_logos}
+\def\myImg{02_images}
+\def\myParts{03_parts}
+\def\myGraphs{04_graphs}
+
+\newcommand{\noteMI}[1]{\textcolor{green}{#1}} 
+\newcommand{\noteTH}[1]{\textcolor{red}{#1}}
+
+
+\def\bx{{\bm {x}}}
+\def\bu{{\bm {u}}}
+%~ \def\rd{\mathrm{d}}
+%~ \def\div{\mathrm{div}}
+%~ \def\grad{\mathrm{grad}}
+%~ \def\bs{\bm{\mathit{S}}}
+%~ \def\te{\bm{\mathsf{T}}}
+%~ \def\Nabla{{\bm{\nabla}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% for math mode
+%~ \newcommand{\mbb}{\mathbb}
+%~ \newcommand{\mbf}{\mathbf}
+%~ \newcommand{\mathrm}{\mathrm}
+%~ \newcommand{\mcal}{\mathcal}
+%~ \newcommand{\mtt}{\mathtt}
+%~ \newcommand{\ical}{\intercal}
+% dimless numbers
+\newcommand\Bond{\mbox{\textrm{Bo}}}
+\newcommand\Rey{\mbox{\textrm{Re}}}
+\newcommand\Co{\mbox{\textrm{Co}}}
+
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+
+%~ \makeatletter
+%~ \newcommand{\leqnomode}{\tagsleft@true}
+%~ \newcommand{\reqnomode}{\tagsleft@false}
+%~ \makeatother{}
+
+\makeatletter
+\newcommand{\leqnomode}{\tagsleft@true\let\veqno\@@leqno}
+\newcommand{\reqnomode}{\tagsleft@false\let\veqno\@@eqno}
+\makeatother
+
+% for text mode
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\\noindent}
+
+\newtheorem{remr}{Remark}
+\newtheorem{defn}{Definition}
+\newtheorem{lem}{Lemma}
+\newtheorem{ex}{Example}
+\newtheorem{cor}{Corollary}
+\newtheorem{theo}{Theorem}
+
+\newtheorem{alg}{Algorithm}
+
+% norm command
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+
+% for tables
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+% for complex figures
+\newcommand{\leftTrans}{-2.0}
+\newcommand{\rightTrans}{8.70}
+\newcommand{\topTrans}{6.8}
+\newcommand{\botTrans}{0.8}
+\newcommand{\scFact}{2.3}
+% \newcommand\myApproxCG{\mathrel{\stackrel{\makebox[0pt]{\mbox{\normalfont\tiny GC}}}{$\approx$}}}
+\newcommand\myApproxCG{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\scriptsize\sffamily GQ}}}{\approx}}}
+\newcommand\myApproxTE{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\scriptsize\sffamily TE}}}{\approx}}}
+\newcommand\myEqCG{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\scriptsize\sffamily GT}}}{=}}}
+\newcommand\myEqTE{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\scriptsize\sffamily TE}}}{\approx}}}
+\newcommand\myFVMar{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\scriptsize\sffamily FVM}}}{\rightarrow}}}
+
+%% set up the colors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% section and lower
+%~ \makeatletter
+%~ \renewcommand\thesection       {{\color{chaptergrey}\arabic{section}}}
+%~ \renewcommand\thesubsection    {\thesection{\color{chaptergrey}.\arabic{subsection}}}
+%~ \renewcommand\thesubsubsection {\thesubsection {\color{chaptergrey}.\arabic{subsubsection}}}
+%~ \renewcommand\theparagraph     {\thesubsubsection{\color{chaptergrey}.\arabic{paragraph}}}
+%~ \renewcommand\thesubparagraph  {\theparagraph{\color{chaptergrey}.\arabic{subparagraph}}}
+%~ 
+%~ 
+%~ \makeatother
+
+% pagestyle empty settings
+\addtocontents{toc}{\protect\thispagestyle{empty}}
+
+% paragraph settings
+\setlength{\parskip}{\baselineskip}%
+\setlength{\parindent}{0pt}%
+
+    
+
+\usepackage{nameref}
+\usepackage{hyperref}%with borders around refs
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=true,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=true,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={nameOfTheWorkHere},    % title
+    pdfauthor={author},     % author
+    pdfsubject={Masters thesis},   % subject of the document
+    pdfcreator={},   % creator of the document
+    pdfproducer={}, % producer of the document
+    pdfkeywords={}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=black           % color of external links
+} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

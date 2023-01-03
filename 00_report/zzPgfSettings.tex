@@ -1,0 +1,153 @@
+% redefine \mathrm to be a \protected macro rather than a `robust' command
+\protected\edef\mathrm{%
+  \unexpanded\expandafter\expandafter\expandafter{%
+    \csname mathrm \endcsname
+  }%
+}
+
+\newcommand{\numOfFiles}{11}
+\newcommand{\figHeight}{8cm}
+\newcommand{\figWidth}{8cm}
+
+\newcounter{cnt}
+\newcommand\textlist{}
+\newcommand\settext[2]{%
+  \csdef{text#1}{#2}}
+\newcommand\addtext[1]{%
+  \stepcounter{cnt}%
+  \csdef{text\thecnt}{#1}}
+\newcommand\gettext[1]{%
+  \csuse{text#1}}
+  
+\newcounter{savePage}
+  
+%% Adds a possibility of setting the cycle position %%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\pgfplots@getautoplotspec into#1{%
+    \begingroup
+    \let#1=\pgfutil@empty
+    \pgfkeysgetvalue{/pgfplots/cycle multi list/@dim}\pgfplots@cycle@dim
+    %
+    \let\pgfplots@listindex=\pgfplots@numplots
+    %%% Start new code
+    \pgfkeysgetvalue{/pgfplots/cycle list set}\pgfplots@listindex@set
+    \ifx\pgfplots@listindex@set\pgfutil@empty
+    \else 
+        \c@pgf@counta=\pgfplots@listindex
+        \c@pgf@countb=\pgfplots@listindex@set
+        \advance\c@pgf@countb by -\c@pgf@counta
+        \globaldefs=1\relax
+        \edef\setshift{%
+            \noexpand\pgfkeys{
+                /pgfplots/cycle list shift=\the\c@pgf@countb,
+                /pgfplots/cycle list set=
+            }
+        }%
+        \setshift%
+    \fi
+    %%% End new code    
+    \pgfkeysgetvalue{/pgfplots/cycle list shift}\pgfplots@listindex@shift
+    \ifx\pgfplots@listindex@shift\pgfutil@empty
+    \else
+        \c@pgf@counta=\pgfplots@listindex\relax
+        \advance\c@pgf@counta by\pgfplots@listindex@shift\relax
+        \ifnum\c@pgf@counta<0
+            \c@pgf@counta=-\c@pgf@counta
+        \fi
+        \edef\pgfplots@listindex{\the\c@pgf@counta}%
+    \fi
+    \ifnum\pgfplots@cycle@dim>0
+        % use the 'cycle multi list' feature.
+        %
+        % it employs a scalar -> multiindex map like
+        % void fromScalar( size_t d, size_t scalar, size_t* Iout, const size_t* N )
+        % {
+        %   size_t ret=scalar;
+        %   for( int i = d-1; i>=0; --i ) {
+        %       Iout[i] = ret % N[i];
+        %       ret /= N[i];
+        %   }
+        % }
+        % to get the different indices into the cycle lists.
+        %-------------------------------------------------- 
+        \c@pgf@counta=\pgfplots@cycle@dim\relax
+        \c@pgf@countb=\pgfplots@listindex\relax
+        \advance\c@pgf@counta by-1
+        \pgfplotsloop{%
+            \ifnum\c@pgf@counta<0
+                \pgfplotsloopcontinuefalse
+            \else
+                \pgfplotsloopcontinuetrue
+            \fi
+        }{%
+            \pgfkeysgetvalue{/pgfplots/cycle multi list/@N\the\c@pgf@counta}\pgfplots@cycle@N
+            % compute list index:
+            \pgfplotsmathmodint{\c@pgf@countb}{\pgfplots@cycle@N}%
+            \divide\c@pgf@countb by \pgfplots@cycle@N\relax
+            %
+            \expandafter\pgfplots@getautoplotspec@
+                \csname pgfp@cyclist@/pgfplots/cycle multi list/@list\the\c@pgf@counta @\endcsname
+                {\pgfplots@cycle@N}%
+                {\pgfmathresult}%
+            \t@pgfplots@toka=\expandafter{#1,}%
+            \t@pgfplots@tokb=\expandafter{\pgfplotsretval}%
+            \edef#1{\the\t@pgfplots@toka\the\t@pgfplots@tokb}%
+            \advance\c@pgf@counta by-1
+        }%
+    \else
+        % normal cycle list:
+        \pgfplotslistsize\autoplotspeclist\to\c@pgf@countd
+        \pgfplots@getautoplotspec@{\autoplotspeclist}{\c@pgf@countd}{\pgfplots@listindex}%
+        \let#1=\pgfplotsretval
+    \fi
+    \pgfmath@smuggleone#1%
+    \endgroup
+}
+
+\pgfplotsset{
+    cycle list set/.initial=
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pgfplotsset{
+/pgfplots/bar cycle list/.style={/pgfplots/cycle list={%
+cyan!60!black,fill=cyan!80!black,mark=none*\\%
+lime!80!black,fill=lime,mark=none*\\%
+red,densely dashed,fill=red!80!black,mark=none*\\%
+yellow!60!black,densely dashed,solid,fill=yellow!80!black,mark=none*\\%
+black,solid,fill=gray,mark=none*\\%
+red,densely dashed,fill=red!80!black,mark=mark=none*\\%
+}
+},
+}
+\pgfplotsset{soldot/.style={color=black,only marks,mark=*},
+             holdot/.style={color=black,fill=white,only marks,mark=*},
+             compat=1.12}
+
+% Style to select only points from #1 to #2 (inclusive)
+\pgfplotsset{select coords between index/.style 2 args={
+    x filter/.code={
+        \ifnum\coordindex<#1\def\pgfmathresult{}\fi
+        \ifnum\coordindex>#2\def\pgfmathresult{}\fi
+    }
+}}
+
+\pgfdeclarelayer{bg}    % declare background layer
+\pgfsetlayers{bg,main}  % set the order of the layers (main is the standard layer
+
+\tikzset{>=latex}
+
+% \newbox{\LegDas}
+% \savebox{\LegDas}{
+%     (\begin{tikzpicture}
+%     \draw[black,thick,dashdotted](0,0.09) -- (0.5,0.09);
+%     \phantom{\draw[white](0,0) -- (0.09,0);}
+%     \end{tikzpicture})}
+
+% \newbox{\LegDash}
+% \savebox{\LegDash}{
+%     (\begin{tikzpicture}
+%     \draw[black,thick,dashed](0,0.09) -- (0.55,0.09);
+%     \phantom{\draw[white](0,0) -- (0.09,0);}
+%     \end{tikzpicture})}

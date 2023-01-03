@@ -32,4 +32,12 @@
 *.app
 
 # vscode stuff
-.vscode/*
+*.vscode
+
+# latex stuff
+*.aux
+*.log
+*.nlo
+*.out
+*.toc
+*.xml

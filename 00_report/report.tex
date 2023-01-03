@@ -1,0 +1,84 @@
+%%%DOCOCUMENT SETTINGS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{zzHead.tex}                                                      %packages and general
+\input{zzPgfSettings.tex}                                               %pgfplot library settings
+%%%DOCUMENT ITSELF%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\pagenumbering{gobble}
+
+\begin{document}
+
+%%%TITLEPAGE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \selectlanguage{british}
+
+\begin{titlepage}
+
+\hspace{5.5cm}
+
+% Head
+\includegraphics[height=1.4cm]{\myLogos/logoUCT_basic_CB.png} \\[0.3cm]
+
+%~ \textbf{\normalsize{UNIVERSITY OF CHEMISTRY AND TECHNOLOGY, PRAGUE}\\[0.5cm]
+\color{black!60}\Large\textsf{Institute of Thermomechanics, Czech Academy of Sciences}\\[0.4cm]
+\color{black}
+{\fontsize{16}{60}\selectfont \textbf{{\textsf{Department of Waves in Solids}}}\\[0.6cm]}
+
+
+% Title
+{\fontsize{35}{60}\selectfont {\textsf{Air flow in the urban area of\\[0.15cm]Hsinchu city}\\[0.4cm]}}
+
+{{\Large \textsf{REPORT FROM THE STUDENT INTERNSHIP}}\\[0.4cm]}
+
+\vfill
+
+% Author and supervisor
+\begin{tabular}{p{0.2\textwidth}|p{0.8\textwidth}}
+\textsf{\small\color{chaptergrey}AUTHOR}         &   \textbf{\Large\textsf{Ing. Tomáš Hlavatý}}\\[0.1cm]
+% \textsf{\small\color{chaptergrey}SUPERVISOR}     &   \textbf{\Large\textsf{Ing. Martin Isoz, Ph.D.}}\\[0.1cm]
+% \textsf{\small\color{chaptergrey}STUDY FIELD}  &   \textbf{\Large\textsf{Chemical Engineering and Bioengineering}}\\[0.1cm]
+\textsf{\small\color{chaptergrey}PROGRAMME}    &   \textbf{\Large\textsf{NARLabs student internship programme}}\\[0.1cm]
+\textsf{\small\color{chaptergrey}YEAR}           &   \textbf{\Large\textsf{2023}}
+\end{tabular}
+
+\end{titlepage}
+
+%%%ABSTRACT%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cleardoublepage
+\section*{Summary}
+\noteTH{Abstract of the report will be there}
+
+%%%NICE IMAGE AND DEDICATION%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cleardoublepage
+\phantom{a}
+\vfill
+
+\section*{Acknowledgements}
+\noteTH{Acknowledgements for supervisors and the NARLabs.}
+
+%%%TABLE-OF-CONTENTS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cleardoublepage
+\tableofcontents
+
+%%%INCLUDE TEXT PARTS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{\myParts/01_introV1.tex}
+\input{\myParts/02_theorV1.tex}
+\input{\myParts/03_modDescV1.tex}
+\input{\myParts/04_expV1.tex}
+\input{\myParts/05_conclV1.tex}
+\input{\myParts/06_nomenV1.tex}
+
+
+%%%BIBLIOGRAPHY%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\cleardoublepage
+\phantomsection
+
+
+\addcontentsline{toc}{section}{Bibliography}
+\printbibliography
+
+%%%APPENDICES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \begin{appendix}
+	 \input{\myParts/ZZ_appendixV1.tex}
+ \end{appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
