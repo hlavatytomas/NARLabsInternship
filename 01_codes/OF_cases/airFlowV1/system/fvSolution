@@ -54,7 +54,7 @@ solvers
     k
     {
         solver          PBiCGStab;
-        preconditioner  none;
+        preconditioner  DILU;
         tolerance       1e-09;
         relTol          0.01;
     }
@@ -62,7 +62,7 @@ solvers
     omega
     {
         solver          PBiCGStab;
-        preconditioner  none;
+        preconditioner  DILU;
         tolerance       1e-09;
         relTol          0.01;
     }
@@ -83,9 +83,10 @@ relaxationFactors
 {
     fields
     {
-        p           0.1;
-        U           0.2;
-        T           0.9;
+        p           0.05;
+        U           0.1;
+        k               0.9;
+        omega           0.9;
         // "(CO|O2|CO2)" 	 0.0001;
     }
     equations
@@ -93,7 +94,7 @@ relaxationFactors
         U               0.9;
         p               0.95;
         k               0.8;
-        omega           0.8;
+        omega           0.6;
     }
 }
 
