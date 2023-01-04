@@ -41,3 +41,13 @@
 *.out
 *.toc
 *.xml
+
+# literature folder because I cant share those
+02_literature/*
+
+# openFOAM stuff
+*log*
+*processor*
+*polyMesh*
+*.OpenFOAM
+*0/
