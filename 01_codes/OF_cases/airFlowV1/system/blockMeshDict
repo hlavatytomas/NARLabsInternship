@@ -1,0 +1,87 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 1;
+
+domainSizeX 200;
+domainSizeY 100;
+domainSizeXM -100;
+domainSizeYM -200;
+domainSizeZ 200;
+
+vertices
+(
+    ($domainSizeXM $domainSizeYM 0)
+    ($domainSizeX $domainSizeYM 0)
+    ($domainSizeX  $domainSizeY 0)
+    ($domainSizeXM  $domainSizeY 0)
+    ($domainSizeXM $domainSizeYM $domainSizeZ)
+    ($domainSizeX $domainSizeYM $domainSizeZ)
+    ($domainSizeX  $domainSizeY $domainSizeZ)
+    ($domainSizeXM  $domainSizeY $domainSizeZ)
+);
+
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) (150 150 100) simpleGrading (1 1 2)
+);
+
+boundary
+(
+    frontAndBack
+    {
+        type patch;
+        faces
+        (
+            (3 7 6 2)
+            (1 5 4 0)
+        );
+    }
+    inlet
+    {
+        type patch;
+        faces
+        (
+            (0 4 7 3)
+        );
+    }
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (2 6 5 1)
+        );
+    }
+    lowerWall
+    {
+        type wall;
+        faces
+        (
+            (0 3 2 1)
+        );
+    }
+    upperWall
+    {
+        type patch;
+        faces
+        (
+            (4 5 6 7)
+        );
+    }
+);
+
+// ************************************************************************* //
