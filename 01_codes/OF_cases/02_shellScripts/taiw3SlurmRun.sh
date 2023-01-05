@@ -12,10 +12,10 @@
 
 # -- parameters for script
 # singularity image file
-singDir="/home/u4660703/Singularity/NARLabsInternship/01_codes/singularity/singularity/ubuntu.sif"¨
+singDir="../../singularity/ubuntu.sif"
 
 # openFoam case dir
-caseDir="/home/u4660703/Singularity/NARLabsInternship/01_codes/OF_cases/airFlowV1"
+caseDir="../airFlowV1"
 
 # -- load singularity
 module load libs/singularity
