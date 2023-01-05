@@ -1,0 +1,19 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+
+flowVelocity         (10 0 0);
+pressure             0;
+// turbulentKE          0.24;
+turbulentKE          3.75e-1;
+turbEps              2.95e-4;
+turbulentOmega       8.75e-3;
+inNutT               4.29e+1;
+mixLenght            70;
+turbInt              0.05;
+
+// ************************************************************************* //
