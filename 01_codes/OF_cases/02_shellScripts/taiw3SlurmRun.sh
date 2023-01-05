@@ -10,12 +10,18 @@
 
 # -- Slurm script to run simulations on Taiwania 3
 
+# -- parameters for script
+# singularity image file
+singDir="../../singularity/ubuntu.sif"¨
+
+# openFoam case dir
+caseDir="../airFlowV1"
+
 # -- load singularity
-singDir="/home/u4660703/Singularity/NARLabsInternship/01_codes/singularity/ubuntu.sif"
 module load libs/singularity
 
 # -- prepare geometry
-singularity exec $singDir bash ./Allrun
+singularity exec $singDir bash $caseDir/Allrun
 
 # -- run simulation
-singularity exec $singDir bash ./Allrun2
+singularity exec $singDir bash $caseDir/Allrun2
