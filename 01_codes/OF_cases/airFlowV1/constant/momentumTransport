@@ -17,7 +17,8 @@ simulationType RAS;
 
 RAS
 {
-    model               kOmegaSST;
+    // model               kOmegaSST;
+    RASModel        kEpsilon;
 
     turbulence          on;
 

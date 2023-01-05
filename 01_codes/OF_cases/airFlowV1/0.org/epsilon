@@ -9,44 +9,49 @@ FoamFile
 {
     format      ascii;
     class       volScalarField;
-    object      omega;
+    location    "0";
+    object      epsilon;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 #include        "include/initialConditions"
 
-dimensions      [0 0 -1 0 0 0 0];
+dimensions      [0 2 -3 0 0 0 0];
 
-internalField   uniform $turbulentOmega;
+internalField   uniform $turbEps;
 
 boundaryField
 {
-    //- Set patchGroups for constraint patches
-    #includeEtc "caseDicts/setConstraintTypes"
-
-    #include "include/fixedInlet"
-
-    outlet
+    inlet
     {
-        type            inletOutlet;
-        inletValue      $internalField;
+        // type            fixedValue;
+        // value           $internalField;
+        type            turbulentMixingLengthDissipationRateInlet;
+        mixingLength    $mixLenght;
         value           $internalField;
     }
-
+    outlet
+    {
+        type            zeroGradient;
+        // type            inletOutlet;
+        // inletValue      uniform (0 0 0);
+        // value           $internalField;
+    }
+    upperWall
+    {
+        type            slip;
+    }
     lowerWall
     {
-        type            omegaWallFunction;
+        type            epsilonWallFunction;
         value           $internalField;
     }
 
     "build1|build2|build3|build4"
     {
-        type            omegaWallFunction;
+        type            epsilonWallFunction;
         value           $internalField;
     }
 
     #include "include/frontBackUpperPatches"
 }
-
-
-// ************************************************************************* //
