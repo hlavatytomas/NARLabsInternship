@@ -18,4 +18,4 @@ module load libs/singularity
 singularity exec $singDir bash ./Allrun
 
 # -- run simulation
-singularity exec $singDir bash ./Allrun
+singularity exec $singDir bash ./Allrun2
