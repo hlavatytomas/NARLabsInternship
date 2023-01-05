@@ -12,7 +12,7 @@
 
 # -- parameters for script
 # singularity image file
-singDir="../../singularity/ubuntu.sif"
+singDir="../../singularity/ubuntu2.sif"
 
 # openFoam case dir
 caseDir="../airFlowV1"
