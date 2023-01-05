@@ -51,3 +51,6 @@
 *polyMesh*
 *.OpenFOAM
 *0/
+
+# singularity container --> too big for github
+01_codes/singularity/ubuntu.sif
