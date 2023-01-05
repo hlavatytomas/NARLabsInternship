@@ -24,13 +24,6 @@ module load libs/singularity
 i=1;
 for scriptToRun in "$@" 
 do
-    # echo "Username - $i: $user";
     singularity exec $singDir bash $caseDir/$scriptToRun
     i=$((i + 1));
 done
-
-# -- prepare geometry
-# singularity exec $singDir bash $caseDir/Allrun
-
-# -- run simulation
-# singularity exec $singDir bash $caseDir/Allrun2
