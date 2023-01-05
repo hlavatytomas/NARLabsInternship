@@ -1,12 +1,12 @@
 #!/bin/sh
+
+# -- script to create geometry of the case
+
 cd ${0%/*} || exit 1    # Run from this directory
 
 # Source tutorial run functions
+. /opt/openfoam10/etc/bashrc
 . $WM_PROJECT_DIR/bin/tools/RunFunctions
-
-# Copy motorbike surface from resources directory
-# cp $FOAM_TUTORIALS/resources/geometry/motorBike.obj.gz constant/geometry/
-# runApplication surfaceFeatures
 
 cp -r 0.org 0
 
@@ -18,12 +18,5 @@ runApplication decomposePar -copyZero
 runParallel snappyHexMesh -overwrite
 
 runApplication reconstructParMesh -constant
-
-# runParallel patchSummary
-# runParallel potentialFoam
-# runParallel $(getApplication)
-
-# runApplication reconstructParMesh -constant
-# runApplication reconstructPar -latestTime
 
 #------------------------------------------------------------------------------
