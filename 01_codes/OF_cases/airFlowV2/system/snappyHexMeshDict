@@ -33,12 +33,12 @@ geometry
     //     file "motorBike.obj";
     // }
 
-    // refinementBox
-    // {
-    //     type searchableBox;
-    //     min (-1.0 -0.7 0.0);
-    //     max ( 8.0  0.7 2.5);
-    // }
+    velkyBox
+    {
+        type searchableBox;
+        min (-50    0   0.0);
+        max (300.0  240 80);
+    }
     build1
     {
         type triSurfaceMesh;
@@ -115,7 +115,7 @@ castellatedMeshControls
     // Number of buffer layers between different levels.
     // 1 means normal 2:1 refinement restriction, larger means slower
     // refinement.
-    nCellsBetweenLevels 15;
+    nCellsBetweenLevels 4;
 
 
 
@@ -148,8 +148,8 @@ castellatedMeshControls
         build1
         {
             // Surface-wise min and max refinement level
-            level (0 0);
-            level (2 3);
+            level (2 2);
+            // level (2 3);
 
             // Optional specification of patch type (default is wall). No
             // constraint types (cyclic, symmetry) etc. are allowed.
@@ -218,11 +218,11 @@ castellatedMeshControls
 
     refinementRegions
     {
-        // refinementBox
-        // {
-        //     mode    inside;
-        //     level   4;
-        // }
+        velkyBox
+        {
+            mode    inside;
+            level   1;
+        }
     }
 
 

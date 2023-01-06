@@ -24,7 +24,13 @@ boundaryField
     //- Set patchGroups for constraint patches
     #includeEtc "caseDicts/setConstraintTypes"
 
-    #include "include/fixedInlet"
+    // #include "include/fixedInlet"
+
+    inlet
+    {
+        type  fixedValue;
+        value $internalField;
+    }
 
     outlet
     {
@@ -41,7 +47,8 @@ boundaryField
 
     upperWall
     {
-        type            zeroGradient;
+        // type            zeroGradient;
+        type            slip;
     }
 
     "build1|build2|build3|build4"
@@ -52,7 +59,10 @@ boundaryField
         value           $internalField;
     }
 
-    #include "include/frontBackUpperPatches"
+    frontAndBack
+    {
+        type slip;
+    }
 }
 
 

@@ -27,8 +27,8 @@ boundaryField
 
     frontAndBack
     {
-        type            calculated;
-        value           uniform 0;
+        // type            slip;
+        type            slip;
     }
 
     inlet
@@ -55,8 +55,10 @@ boundaryField
 
     upperWall
     {
-        // type            slip;
-        type            zeroGradient;
+        type            slip;
+        // type            calculated;
+        // value           $internalField;
+        // type            zeroGradient;
     }
 
     "build1|build2|build3|build4"
