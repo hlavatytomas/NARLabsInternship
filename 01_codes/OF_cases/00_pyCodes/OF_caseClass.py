@@ -41,9 +41,8 @@ class OpenFOAMCase:
     
     """write openfoam case to given directory"""
     def writeOFCase(self, destDir):
-        # -- copy the base case
-        if not os.path.exists(destDir):
-            os.makedirs(destDir)
+        # -- copy the base case and change directory here
+        if not os.path.exists(destD
         
         # -- make the replaces
         for replace in self.replaces:
