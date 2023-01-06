@@ -31,9 +31,12 @@ boundaryField
 
     outlet
     {
+        type            totalPressure;
+        p0              $internalField;
+        value           $internalField;
         // type            fixedValue;
         // value           $internalField;
-        type            zeroGradient;
+        // type            zeroGradient;
     }
 
     lowerWall
@@ -48,18 +51,16 @@ boundaryField
 
     upperWall
     {
-        // type slip;
-        type            totalPressure;
-        p0              $internalField;
-        value           $internalField;
+        type slip;
+        // type            totalPressure;
+        // p0              $internalField;
+        // value           $internalField;
     }
 
-    // frontAndBack
-    // {
-    //     type slip;
-    // }
-
-    #include "include/frontBackUpperPatches"
+    frontAndBack
+    {
+        type slip;
+    }
 }
 
 // ************************************************************************* //

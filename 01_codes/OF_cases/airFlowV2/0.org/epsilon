@@ -39,8 +39,11 @@ boundaryField
     }
     upperWall
     {
-        // type            slip;
-        type            zeroGradient;
+        type            slip;
+        // type            zeroGradient;
+        // type            inletOutlet;
+        // inletValue      uniform 0;
+        // value           $internalField;
     }
     lowerWall
     {
@@ -54,5 +57,8 @@ boundaryField
         value           $internalField;
     }
 
-    #include "include/frontBackUpperPatches"
+    frontAndBack
+    {
+        type slip;
+    }
 }
