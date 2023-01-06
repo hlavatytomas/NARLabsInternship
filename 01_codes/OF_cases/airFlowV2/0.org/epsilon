@@ -39,7 +39,8 @@ boundaryField
     }
     upperWall
     {
-        type            slip;
+        // type            slip;
+        type            zeroGradient;
     }
     lowerWall
     {

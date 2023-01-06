@@ -50,6 +50,7 @@
 *processor*
 *polyMesh*
 *.OpenFOAM
+*.foam
 *0/
 
 # singularity container --> too big for github

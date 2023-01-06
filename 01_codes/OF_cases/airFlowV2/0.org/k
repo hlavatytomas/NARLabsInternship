@@ -45,6 +45,12 @@ boundaryField
         type            kqRWallFunction;
         value           $internalField;
     }
+    
+    upperWall
+    {
+        // type            slip;
+        type            zeroGradient;
+    }
 
     "build1|build2|build3|build4"
     {

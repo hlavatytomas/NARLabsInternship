@@ -6,10 +6,10 @@
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 
-upperWall
-{
-    type slip;
-}
+// upperWall
+// {
+//     type slip;
+// }
 
 frontAndBack
 {

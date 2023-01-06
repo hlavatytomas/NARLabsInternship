@@ -39,6 +39,11 @@ boundaryField
         value           $internalField;
     }
 
+    upperWall
+    {
+        type            zeroGradient;
+    }
+
     "build1|build2|build3|build4"
     {
         // type            omegaWallFunction;
