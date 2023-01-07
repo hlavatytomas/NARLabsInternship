@@ -1,11 +1,35 @@
 \cleardoublepage
 
-\section{Evironment}
+\section{Used computational evironment setup}
 \label{sec:env}
+
+NCHC servers use singularity container~\cite{singularity}.
 
 \subsection{Preparation of the singularity container}
 \label{subsec:prepCont}
-\texttt{sudo singularity build --sandbox ./ubuntu docker://ubuntu:latest}\\
+
+Assuming you have super-user permission and singularity installed, a preparation of the singularity container image from docker ubuntu:latest release and with openfoam.org/v10 and other useful applications installed inside can be done as follows:
+\begin{itemize}
+    \item New container (\texttt{./ubuntu}) is created from ubuntu docker repository, \texttt{----sandbox} flag allows to write into it later:\\[0.2cm] 
+    \texttt{sudo singularity build --sandbox ./ubuntu docker://ubuntu:latest}
+    \item Shell inside container is opened with \texttt{----writable} flag to install necessary stuff into container:\\[0.2cm] 
+    \texttt{sudo singularity shell --writable ./ubuntu}
+    \item Installation of the basic applications and openfoam.org/v10 into container:\\[0.2cm] 
+    \texttt{apt update}\\
+    \texttt{apt install python3 python3-pip wget vim software-properties-common \\ \indent\quad\quad python3-tk}\\
+    \texttt{pip3 install matplotlib}\\
+    \texttt{sh -c "wget -O - https://dl.openfoam.org/gpg.key >} \\ \indent\quad\quad\texttt{/etc/apt/trusted.gpg.d/openfoam.asc"}\\
+    \texttt{add-apt-repository http://dl.openfoam.org/ubuntu}\\
+    \texttt{apt update}\\
+    \texttt{apt install openfoam10}
+    \item If you want to compile custom openfoam solver, source openfoam in container:\\[0.2cm] 
+    \texttt{. /opt/openfoam10/etc/bashrc}
+    \item and compile it using \texttt{wmake} in prepared solver directory (in our case in\\ \texttt{./01\_codes/OF\_cases/03\_customSolvers/pollutionFoam}).
+    \item When everything is installed, the \texttt{.sif} container file can be build using:\\[0.2cm] 
+    \texttt{sudo singularity build ubuntu.sif ./ubuntu/}
+\end{itemize}
+
+Following the above listed guideline, singularity container image \texttt{ubuntu.sif} is created. This can be deported to NCHC servers and used. 
 
 
 \section{Model description}
