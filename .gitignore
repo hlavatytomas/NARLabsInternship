@@ -52,6 +52,9 @@
 *.OpenFOAM
 *.foam
 *0/
+*linux64GccDPInt32Opt*
 
 # singularity container --> too big for github
 01_codes/singularity/ubuntu.sif
+01_codes/singularity/ubuntu2.sif
+01_codes/singularity/ubuntu3.sif
