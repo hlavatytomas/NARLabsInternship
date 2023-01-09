@@ -56,6 +56,7 @@ for replace in changes["replaces"]:
 hk1.runCommands \
 (
     [
+        "chmod +x ./geometry ./simulationFlow ./simulationPollution"
         "singularity exec ~/Singularity/ubuntu2.sif bash ./geometry",
         "singularity exec ~/Singularity/ubuntu2.sif bash ./simulationFlow",
     ]
