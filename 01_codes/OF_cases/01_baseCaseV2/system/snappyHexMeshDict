@@ -37,7 +37,7 @@ geometry
     {
         type searchableBox;
         min (-50    0   0.0);
-        max (300.0  240 80);
+        max (300.0  240 150);
     }
     build1
     {
@@ -149,7 +149,7 @@ castellatedMeshControls
         {
             // Surface-wise min and max refinement level
             // level (2 2);
-            level (3 4);
+            level (2 3);
 
             // Optional specification of patch type (default is wall). No
             // constraint types (cyclic, symmetry) etc. are allowed.

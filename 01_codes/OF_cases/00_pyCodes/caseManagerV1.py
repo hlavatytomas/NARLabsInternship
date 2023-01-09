@@ -32,7 +32,7 @@ changes = \
             ["system/blockMeshDict", "NC_X", str(NC_X)],
             ["system/blockMeshDict", "NC_Y", str(NC_Y)],
             ["system/blockMeshDict", "NC_Z", str(NC_Z)],
-            ["system/snappyHexMeshDict", "REF_LEVEL_VELKY_BOX", str(2)],
+            ["system/snappyHexMeshDict", "REF_LEVEL_VELKY_BOX", str(1)],
         ]
 }   
 
