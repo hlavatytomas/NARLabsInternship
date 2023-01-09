@@ -36,8 +36,8 @@ geometry
     velkyBox
     {
         type searchableBox;
-        min (-50    0   0.0);
-        max (300.0  240 150);
+        min (-100    0   0.0);
+        max (600.0  480 150);
     }
     build1
     {

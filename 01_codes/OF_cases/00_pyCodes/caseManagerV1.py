@@ -15,9 +15,10 @@ DOMAIN_SIZE_Y = 270*2
 DOMAIN_SIZE_MX = -80*2
 DOMAIN_SIZE_MY = -30*2
 DOMAIN_SIZE_Z = 300*2 
-NC_X = 150
-NC_Y = 90
-NC_Z = 120
+NC_X = 75
+NC_Y = 45
+NC_Z = 60
+REF_LEVEL_VELKY_BOX = 2
 
 # -- changes that should be applied
 changes = \
@@ -32,7 +33,7 @@ changes = \
             ["system/blockMeshDict", "NC_X", str(NC_X)],
             ["system/blockMeshDict", "NC_Y", str(NC_Y)],
             ["system/blockMeshDict", "NC_Z", str(NC_Z)],
-            ["system/snappyHexMeshDict", "REF_LEVEL_VELKY_BOX", str(1)],
+            ["system/snappyHexMeshDict", "REF_LEVEL_VELKY_BOX", str(REF_LEVEL_VELKY_BOX)],
         ]
 }   
 
