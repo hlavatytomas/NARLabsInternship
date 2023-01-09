@@ -6,8 +6,8 @@
 from OF_caseClass import OpenFOAMCase
 
 # -- parameters 
-bsCsDir = "../01_baseCaseV2/"
-finCsDir = "../ZZ_cases/hongKongV1/"
+bsCsDir = "../01_baseCaseV2"
+finCsDir = "../ZZ_cases/hongKongV1"
 
 # -- blockMesh parameters
 DOMAIN_SIZE_X = 420*2
@@ -57,8 +57,8 @@ hk1.runCommands \
 (
     [
         "chmod +x ./geometry ./simulationFlow ./simulationPollution",
-        "singularity exec ~/Singularity/ubuntu2.sif bash %s/%s/geometry" % (hk1.whereIStart,hk1.dir),
-        "singularity exec ~/Singularity/ubuntu2.sif bash ./simulationFlow",
+        "singularity exec -H %s/%s ~/Singularity/ubuntu2.sif bash ./geometry" % (hk1.whereIStart,hk1.dir),
+        "singularity exec -H %s/%s ~/Singularity/ubuntu2.sif bash ./simulationFlow" % (hk1.whereIStart,hk1.dir),
     ]
 ) 
 
@@ -69,7 +69,7 @@ hk1.runCommands \
 (
     [
         "cp -r 0/yPol %g/" %(hk1.latestTime),
-        "singularity exec ~/Singularity/ubuntu2.sif bash ./simulationPollution",
+        "singularity exec -H %s/%s ~/Singularity/ubuntu2.sif bash ./simulationPollution" % (hk1.whereIStart,hk1.dir),
     ]
 )
 
