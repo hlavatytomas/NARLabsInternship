@@ -60,9 +60,8 @@ changes2 = \
 
 # -- prepare case
 hk1 = OpenFOAMCase()
-# hk1.loadOFCaseFromBaseCase(bsCsDir)
-hk1.loadOFCaseFromBaseCase(finCsDir)
-# hk1.changeOFCaseDir(finCsDir)
+hk1.loadOFCaseFromBaseCase(bsCsDir)
+hk1.changeOFCaseDir(finCsDir)
 hk1.copyBaseCase()
 for replace in changes["replaces"]:
     hk1.replace(replace)
@@ -80,14 +79,14 @@ for setPar in changes["setPars"]:
 #     ])     
 
 # -- create geometry and run flow simulation on Kuos desktop
-# hk1.runCommands \
-# (
-#     [
-#         "chmod 775 -R ./*",
-#         "singularity exec -H %s/%s ~/Singularity/ubuntu2.sif bash ./geometry" % (hk1.whereIStart,hk1.dir),
-#         "singularity exec -H %s/%s ~/Singularity/ubuntu2.sif bash ./simulationFlow" % (hk1.whereIStart,hk1.dir),
-#     ]
-# ) 
+hk1.runCommands \
+(
+    [
+        "chmod 775 -R ./*",
+        "singularity exec -H %s/%s ~/Singularity/ubuntu2.sif bash ./geometry" % (hk1.whereIStart,hk1.dir),
+        "singularity exec -H %s/%s ~/Singularity/ubuntu2.sif bash ./simulationFlow" % (hk1.whereIStart,hk1.dir),
+    ]
+) 
 
 # -- change numerical properties
 for setPar in changes2["setPars"]:
