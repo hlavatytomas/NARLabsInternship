@@ -44,7 +44,7 @@ geometry
         type triSurfaceMesh;
         file "hkCity.stl";
         // file "build1V2.stl";
-        scale 25;
+        scale 50;
     }    
     // build1
     // {
@@ -148,8 +148,8 @@ castellatedMeshControls
         build1
         {
             // Surface-wise min and max refinement level
-            level (2 2);
-            // level (2 3);
+            // level (2 2);
+            level (3 3);
 
             // Optional specification of patch type (default is wall). No
             // constraint types (cyclic, symmetry) etc. are allowed.
