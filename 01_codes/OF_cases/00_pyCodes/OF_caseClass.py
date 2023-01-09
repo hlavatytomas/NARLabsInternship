@@ -16,10 +16,11 @@
 # --                        inFl -- openFoam source file you want to change
 # --                        what -- what you want to replace (string)
 # --                        by -- new value (string)
-# --        5) make above specified changes to files in OpenFOAMCase.dir
-# --            -- applyChangesInDir()
-# --        6) run commands in OpenFOAMCase.dir
-# --            -- runCommand(commands)
+# --        5) run commands in OpenFOAMCase.dir
+# --            -- runCommands(commands)
+
+# --    TODO:
+# --        1) connect with Luckas blockMeshDict class
 
 # -- imports 
 import numpy as np
@@ -27,31 +28,30 @@ import os
 import shutil as sh
 
 class OpenFOAMCase:
-    
-    """initialization of the new OpenFOAMCase"""
     def __init__(self):
+        """initialization of the new OpenFOAMCase"""
         # -- save starting directory
         self.whereIStart = os.getcwd()
         print("New OpenFOAMCase has been initialized, starting directory is:\n\t%s"%self.whereIStart)
     
-    """load OpenFOAMCase from base case directory"""
     def loadOFCaseFromBaseCase(self, baseDir):
+        """load OpenFOAMCase from base case directory"""
         print("OpenFOAMCase.baseCase has been set to :\n\t%s" % baseDir)
         self.baseDir = baseDir
         # -- OpenFOAMCase directory is initialized as its baseDir, can be changed by changeOFCaseDir(dir)
         self.dir = baseDir
     
-    """load OpenFOAMCase from the different OpenFOAMCase"""
     def loadOFCaseFromOFCase(self, parent):
+        """load OpenFOAMCase from the different OpenFOAMCase"""
         print("OpenFOAMCase has been loaded from parent OpenFOAMCase.")
     
-    """change OpenFOAMCase directory"""
     def changeOFCaseDir(self,dir):
+        """change OpenFOAMCase directory"""
         self.dir = dir
         print("OpenFOAMCase directory has been changed from:\n\t%s to %s."%(self.baseDir,dir))
 
-    """copy OpenFOAMCase.baseDir to OpenFOAMCase.dir"""
     def copyBaseCase(self):
+        """copy OpenFOAMCase.baseDir to OpenFOAMCase.dir"""
         # -- if OpenFOAMCase.dir exists, remove it
         if os.path.isdir(self.dir): 
             sh.rmtree(self.dir)
@@ -60,33 +60,28 @@ class OpenFOAMCase:
         sh.copytree(self.baseDir,self.dir)
         print("OpenFOAMCase.baseDir has been copied to OpenFOAMCase.dir:\n\t %s --> %s"%(self.baseDir,self.dir))
 
-    """replace option -- replace inFl (file) what (string) by (string)"""
-    def replace(self, inFl, what, by):
-        self.replaces.append([inFl, what, by])
-    
-    """apply changes in OpenFOAMCase dir"""
-    def applyChangesInDir(self):
+    def replace(self, replace):
+        """replace option -- replace in inFl (file) what (string) by (string)"""
         # -- move to OpenFOAMCase directory 
         os.chdir(self.dir)
 
         # -- make the replaces
-        for replace in self.replaces:
-            inFl, what, by = replace
-            with open(inFl, 'r') as fl:
-                linesInFl = fl.readlines()
+        inFl, what, by = replace
+        with open(inFl, 'r') as fl:
+            linesInFl = fl.readlines()
+        for lnI in range(len(linesInFl)):
+            if what in linesInFl[lnI]:
+                linesInFl[lnI] = linesInFl[lnI].replace(what,by)
+                print("In %s, I have replaced %s by %s on line %d." % (inFl, what, by, lnI))
+        with open(inFl, 'w') as fl:
             for lnI in range(len(linesInFl)):
-                if what in linesInFl[lnI]:
-                    linesInFl[lnI] = linesInFl[lnI].replace(what,by)
-                    print("In %s, I have replaced %s by %s." % (inFl, what, by))
-            with open(inFl, 'w') as fl:
-                for lnI in range(len(linesInFl)):
-                    fl.writelines(linesInFl[lnI])
+                fl.writelines(linesInFl[lnI])
 
         # -- move back where I start
         os.chdir(self.whereIStart)
     
-    """run commands in OpenFOAMCase dir"""
-    def runCommand(self,commands):
+    def runCommands(self,commands):
+        """run commands in OpenFOAMCase dir"""
         # -- move to OpenFOAMCase directory 
         os.chdir(self.dir)
 
