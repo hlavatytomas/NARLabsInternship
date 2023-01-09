@@ -35,12 +35,27 @@ changes = \
         ]
 }   
 
-# -- load base case
+# -- prepare case
 hk1 = OpenFOAMCase()
 hk1.loadOFCaseFromBaseCase(bsCsDir)
 hk1.changeOFCaseDir(finCsDir)
 hk1.copyBaseCase()
 for replace in changes["replaces"]:
     hk1.replace(replace)
-hk1.runCommands(["sh ./geometry"])
 
+# NOTE: not used for my PC
+# # -- create geometry and run simulation on my PC
+# hk1.runCommands(
+#     [
+#         "bash ./geometry",
+#         "bash ./simulationFlow", 
+#         "bash ./simulationPollution"
+#     ])     
+
+# -- create geometry and run simulation on Kuos desktop
+hk1.runCommands(
+    [
+        "singularity exec ~/Singularity/ubuntu2.sif bash ./geometry",
+        "singularity exec ~/Singularity/ubuntu2.sif bash ./simulationFlow",
+        "singularity exec ~/Singularity/ubuntu2.sif bash ./simulationPollution",
+    ])      
