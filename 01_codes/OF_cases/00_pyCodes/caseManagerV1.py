@@ -53,7 +53,7 @@ for replace in changes["replaces"]:
 #     ])     
 
 # -- create geometry and run flow simulation on Kuos desktop
-hk1.runCommands
+hk1.runCommands \
 (
     [
         "singularity exec ~/Singularity/ubuntu2.sif bash ./geometry",
@@ -64,7 +64,7 @@ hk1.runCommands
 # -- update times variable, copy initial condition for pollution simulation, and run pollution simulation
 hk1.updateTimes()
 flLt = hk1.latestTime
-hk1.runCommands
+hk1.runCommands \
 (
     [
         "cp -r 0/yPol %g/" %(hk1.latestTime),
@@ -74,7 +74,7 @@ hk1.runCommands
 
 # -- update times variable and copy pressure field into latestTime for visualizations
 hk1.updateTimes()
-hk1.runCommands
+hk1.runCommands \
 (
     [
         "cp -r %g/p %g/" %(flLt, hk1.latestTime),
