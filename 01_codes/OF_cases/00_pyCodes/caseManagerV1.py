@@ -57,7 +57,7 @@ hk1.runCommands \
 (
     [
         "chmod +x ./geometry ./simulationFlow ./simulationPollution",
-        "singularity exec ~/Singularity/ubuntu2.sif bash ./geometry",
+        "singularity exec ~/Singularity/ubuntu2.sif bash %s/%s/geometry" % (hk1.whereIStart,hk1.dir),
         "singularity exec ~/Singularity/ubuntu2.sif bash ./simulationFlow",
     ]
 ) 
