@@ -82,6 +82,9 @@ class OpenFOAMCase:
         with open(inFl, 'w') as fl:
             for lnI in range(len(linesInFl)):
                 fl.writelines(linesInFl[lnI])
+        
+        # -- move back where I start
+        os.chdir(self.whereIStart)
     
     def setParameter(self, inParVal):
         """setParameter option -- inParVal = [in inFl (file), par (string) val (string)]"""

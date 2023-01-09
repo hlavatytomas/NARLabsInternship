@@ -41,6 +41,7 @@
 *.out
 *.toc
 *.xml
+*.zip
 
 # literature folder because I cant share those
 02_literature/*
