@@ -24,10 +24,10 @@ domainSizeZ DOMAIN_SIZE_Z;
 
 vertices
 (
-    ($domainSizeXM $domainSizeYM 0.01)
-    ($domainSizeX $domainSizeYM 0.01)
-    ($domainSizeX  $domainSizeY 0.01)
-    ($domainSizeXM  $domainSizeY 0.01)
+    ($domainSizeXM $domainSizeYM 0.0)
+    ($domainSizeX $domainSizeYM 0.0)
+    ($domainSizeX  $domainSizeY 0.0)
+    ($domainSizeXM  $domainSizeY 0.0)
     ($domainSizeXM $domainSizeYM $domainSizeZ)
     ($domainSizeX $domainSizeYM $domainSizeZ)
     ($domainSizeX  $domainSizeY $domainSizeZ)

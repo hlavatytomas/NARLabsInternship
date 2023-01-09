@@ -54,7 +54,7 @@ class OpenFOAMCase:
     def changeOFCaseDir(self,dir):
         """change OpenFOAMCase directory"""
         self.dir = dir
-        print("OpenFOAMCase directory has been changed from:\n\t%s to %s."%(self.baseDir,dir))
+        print("OpenFOAMCase directory has been changed from:\n\t%s to %s"%(self.baseDir,dir))
 
     def copyBaseCase(self):
         """copy OpenFOAMCase.baseDir to OpenFOAMCase.dir"""
@@ -67,12 +67,29 @@ class OpenFOAMCase:
         print("OpenFOAMCase.baseDir has been copied to OpenFOAMCase.dir:\n\t %s --> %s"%(self.baseDir,self.dir))
 
     def replace(self, replace):
-        """replace option -- replace in inFl (file) what (string) by (string)"""
+        """replace option -- replace = [in inFl (file), what (string), by (string)]"""
         # -- move to OpenFOAMCase directory 
         os.chdir(self.dir)
 
         # -- make the replaces
         inFl, what, by = replace
+        with open(inFl, 'r') as fl:
+            linesInFl = fl.readlines()
+        for lnI in range(len(linesInFl)):
+            if what in linesInFl[lnI]:
+                linesInFl[lnI] = linesInFl[lnI].replace(what,by)
+                print("In %s, I have replaced %s by %s on line %d." % (inFl, what, by, lnI))
+        with open(inFl, 'w') as fl:
+            for lnI in range(len(linesInFl)):
+                fl.writelines(linesInFl[lnI])
+    
+    def setParameter(self, inParVal):
+        """setParameter option -- inParVal = [in inFl (file), par (string) val (string)]"""
+        # -- move to OpenFOAMCase directory 
+        os.chdir(self.dir)
+
+        # -- make the replaces
+        inFl, what, by = inParVal
         with open(inFl, 'r') as fl:
             linesInFl = fl.readlines()
         for lnI in range(len(linesInFl)):
