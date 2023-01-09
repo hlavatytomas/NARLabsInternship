@@ -73,12 +73,26 @@ solvers
         tolerance       1e-09;
         relTol          0.01;
     }
+    yPol
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-09;
+        relTol          0.01;
+    }
 }
 
 SIMPLE
 {
     nNonOrthogonalCorrectors 2;
     consistent no;
+    residualControl
+    {
+        p           1e-7;
+        U           1e-6;
+        T           1e-9;
+        "(yPol)"    1e-8;
+    }
 }
 
 potentialFlow

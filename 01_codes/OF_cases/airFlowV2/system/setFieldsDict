@@ -9,14 +9,27 @@ FoamFile
 {
     format      ascii;
     class       dictionary;
-    object      physicalProperties;
+    object      setFieldsDict;
 }
+
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// defaultFieldValues
+// (
+//     volScalarFieldValue T 300
+// );
 
-viscosityModel  constant;
+regions
+(
+    // Set patch values (using ==)
+    boxToFace
+    {
+        box (50 124 -0.5) (53 127 0.5);
 
-nu              [0 2 -1 0 0 0 0] 1.5e-05;
-DT       DT       [0 2 -1 0 0 0 0] 1e-05;
-Sc       Sc       [0 0 0 0 0 0 0] 0.9;
+        fieldValues
+        (
+            volScalarFieldValue yPol 0.1
+        );
+    }
+);
 
 // ************************************************************************* //
