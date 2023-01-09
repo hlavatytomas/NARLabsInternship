@@ -149,7 +149,7 @@ castellatedMeshControls
         {
             // Surface-wise min and max refinement level
             // level (2 2);
-            level (3 3);
+            level (3 4);
 
             // Optional specification of patch type (default is wall). No
             // constraint types (cyclic, symmetry) etc. are allowed.
@@ -221,7 +221,7 @@ castellatedMeshControls
         velkyBox
         {
             mode    inside;
-            level   1;
+            level   REF_LEVEL_VELKY_BOX;
         }
     }
 
