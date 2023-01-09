@@ -104,20 +104,20 @@ relaxationFactors
 {
     fields
     {
-        p           0.35;
-        // U           0.8;
-        // k               0.8;
+        p           0.01;
+        U           0.1;
+        k               0.5;
         // omega           0.05;
-        // epsilon           0.8;
+        epsilon           0.5;
         // "(CO|O2|CO2)" 	 0.0001;
     }
     equations
     {
         U               0.85;
         p               0.85;
-        k               0.05;
+        k               0.01;
         // omega           0.1;
-        epsilon           0.05;
+        epsilon           0.01;
     }
 }
 

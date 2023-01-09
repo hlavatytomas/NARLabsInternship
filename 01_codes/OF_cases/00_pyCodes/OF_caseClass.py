@@ -87,18 +87,35 @@ class OpenFOAMCase:
         os.chdir(self.whereIStart)
     
     def setParameter(self, inParVal):
-        """setParameter option -- inParVal = [in inFl (file), par (string) val (string)]"""
+        """setParameter option -- inParVal = [in inFl (file), par (string), val (string), inSubDict (string)]"""
+        """inSubDict option enables to find parameter in subDictionary, if "" then does nothing """
         # -- move to OpenFOAMCase directory 
         os.chdir(self.dir)
 
         # -- make the replaces
-        inFl, what, by = inParVal
+        inFl, par, val, inSubDict = inParVal
         with open(inFl, 'r') as fl:
             linesInFl = fl.readlines()
+        
+        # -- if inSubDict speciefied find where it is
+        if not inSubDict == "":
+            subDictSt, subDictEnd = -1, -1
+            for lnI in range(len(linesInFl)):
+                if inSubDict in linesInFl[lnI]:
+                    subDictSt = lnI
+                if subDictSt != -1 and subDictEnd == -1 and "}" in linesInFl[lnI]:
+                    subDictEnd = lnI
+            if subDictSt == -1:
+                print("I could not find subDict %s in file %s."%(inSubDict,inFl))
         for lnI in range(len(linesInFl)):
-            if what in linesInFl[lnI]:
-                linesInFl[lnI] = linesInFl[lnI].replace(what,by)
-                print("In %s, I have replaced %s by %s on line %d." % (inFl, what, by, lnI))
+            if par in linesInFl[lnI] and (inSubDict == "" or (lnI >= subDictSt and lnI <= subDictEnd)):
+                try:
+                    oldVal = linesInFl[lnI].split(par)[1].replace(' ','').replace('\n','').replace(';','')
+                    if not oldVal == '':
+                        linesInFl[lnI] = linesInFl[lnI].replace(oldVal,val)
+                        print("In %s, I have set parameter %s in subDictionary '%s' from value %s to value %s on line %d." % (inFl, par, inSubDict,oldVal, val, lnI))
+                    else: print("I could not replaced parameter %s on line %d:\n\t'%s'"%(par,lnI,linesInFl[lnI].replace('\n','')))
+                except: print("I could not replaced parameter %s on line %d:\n\t'%s'"%(par,lnI,linesInFl[lnI].replace('\n','')))
         with open(inFl, 'w') as fl:
             for lnI in range(len(linesInFl)):
                 fl.writelines(linesInFl[lnI])
