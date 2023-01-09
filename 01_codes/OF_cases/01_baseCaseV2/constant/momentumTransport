@@ -1,0 +1,32 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  10
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    object      momentumTransport;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+simulationType RAS;
+// simulationType laminar;
+
+RAS
+{
+    // model               kOmegaSST;
+    model               kEpsilon;
+
+    RASModel        kEpsilon;
+
+    turbulence          on;
+    // turbulence          off;
+
+    printCoeffs         on;
+}
+
+// ************************************************************************* //
