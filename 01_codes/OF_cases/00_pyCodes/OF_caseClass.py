@@ -19,6 +19,11 @@
 # --        5) run commands in OpenFOAMCase.dir
 # --            -- runCommands(commands)
 
+# --    additional functions:
+# --        -- updateTimes() 
+# --                update OpenFOAMCase.times variable (includes float folders in OpenFOAMCase.dir)
+# --                and OpenFOAMCase.latestTime variable (max of OpenFOAMCase.times)
+
 # --    TODO:
 # --        1) connect with Luckas blockMeshDict class
 
@@ -26,6 +31,7 @@
 import numpy as np
 import os
 import shutil as sh
+from myAddFcs import *
 
 class OpenFOAMCase:
     def __init__(self):
@@ -94,5 +100,20 @@ class OpenFOAMCase:
         
         # -- move back where I start
         os.chdir(self.whereIStart)
+    
+    def updateTimes(self):
+        """update the OpenFOAMCase.times variable"""
+
+        # -- move to OpenFOAMCase directory 
+        os.chdir(self.dir)
+
+        lstDir = os.listdir()
+        flLstDir = [float(flDir) for flDir in lstDir if isFloat(flDir)]
+        self.times = flLstDir
+        self.latestTime = max(flLstDir)
+        print("Found OpenFOAMCase times are:\n\t%s,\nlatestTime:\n\t%g"%(str(self.times),self.latestTime))
+
+        # -- move back where I start
+        os.chdir(self.whereIStart)  
 
     
