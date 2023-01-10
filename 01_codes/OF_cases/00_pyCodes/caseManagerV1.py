@@ -7,7 +7,7 @@ from OF_caseClass import OpenFOAMCase
 
 # -- parameters 
 bsCsDir = "../01_baseCaseV2"
-finCsDir = "../ZZ_cases/hongKongV1"
+finCsDir = "../ZZ_cases/hongKongV1Dyn"
 singularityFl = "ubuntu3.sif"
 
 # -- blockMesh parameters
@@ -22,10 +22,11 @@ NC_Z = 60
 REF_LEVEL_VELKY_BOX = 2
 endTime1 = 80   
 endTime2 = 300
-timeForPol = 10
+timeForPol = 60
 pRelax1 = 0.01
 pRelax2 = 0.1
 nProc   = 12
+deltaT3 = 1e-5
 
 # -- changes that should be applied when case is created
 changes = \
@@ -84,32 +85,35 @@ for setPar in changes["setPars"]:
 #     ])     
 
 # -- create geometry and run flow simulation on Kuos desktop
-hk1.runCommands \
-(
-    [
-        "chmod 775 -R ./*",
-        "singularity exec -H %s/%s ~/Singularity/%s bash ./geometry" % (hk1.whereIStart,hk1.dir, singularityFl),
-        "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
-    ]
-) 
+# hk1.runCommands \
+# (
+#     [
+#         "chmod 775 -R ./*",
+#         "singularity exec -H %s/%s ~/Singularity/%s bash ./geometry" % (hk1.whereIStart,hk1.dir, singularityFl),
+#         "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
+#     ]
+# ) 
 
-# -- change numerical properties
-for setPar in changes2["setPars"]:
-    hk1.setParameter(setPar)
+# # -- change numerical properties
+# for setPar in changes2["setPars"]:
+#     hk1.setParameter(setPar)
 
-hk1.runCommands \
-(
-    [
-        "mv log.simpleFoam log.simpleFoam1",
-        "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
-    ]
-) 
+# hk1.runCommands \
+# (
+#     [
+#         "mv log.simpleFoam log.simpleFoam1",
+#         "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
+#     ]
+# ) 
 
 # -- update OpenFOAMCase.times variable, copy initial condition for pollution simulation, and run pollution simulation
 hk1.updateTimes()
 flLt = hk1.latestTime
 hk1.setParameter(["system/controlDict", "endTime", str(timeForPol+flLt), ""])
-hk1.setParameter(["system/controlDict", "writeInterval", str(timeForPol+flLt), ""])
+hk1.setParameter(["system/controlDict", "writeInterval", str(0.5), ""])
+hk1.setParameter(["system/controlDict", "deltaT", str(deltaT3), ""])
+hk1.replace(["system/fvSchemes","steadyState","Euler"])
+hk1.replace(["system/fvSchemes","bounded",""])
 hk1.runCommands \
 (
     [

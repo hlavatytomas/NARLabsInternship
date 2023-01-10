@@ -95,6 +95,11 @@ SIMPLE
     }
 }
 
+PIMPLE
+{
+    nNonOrthogonalCorrectors 2;
+}
+
 potentialFlow
 {
     nNonOrthogonalCorrectors 10;
