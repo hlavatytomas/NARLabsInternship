@@ -84,14 +84,14 @@ for setPar in changes["setPars"]:
 #     ])     
 
 # -- create geometry and run flow simulation on Kuos desktop
-# hk1.runCommands \
-# (
-#     [
-#         "chmod 775 -R ./*",
-#         "singularity exec -H %s/%s ~/Singularity/%s bash ./geometry" % (hk1.whereIStart,hk1.dir, singularityFl),
-#         "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
-#     ]
-# ) 
+hk1.runCommands \
+(
+    [
+        "chmod 775 -R ./*",
+        "singularity exec -H %s/%s ~/Singularity/%s bash ./geometry" % (hk1.whereIStart,hk1.dir, singularityFl),
+        "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
+    ]
+) 
 
 # -- change numerical properties
 for setPar in changes2["setPars"]:
