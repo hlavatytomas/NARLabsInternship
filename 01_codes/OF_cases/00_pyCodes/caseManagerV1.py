@@ -6,7 +6,7 @@
 from OF_caseClass import OpenFOAMCase
 
 # -- parameters 
-# bsCsDir = "../01_baseCaseV2"
+bsCsDir = "../01_baseCaseV2"
 bsCsDir = "../ZZ_cases/hongKongV1"
 finCsDir = "../ZZ_cases/hongKongV1Dyn"
 singularityFl = "ubuntu3.sif"
@@ -22,10 +22,10 @@ NC_Y = 45
 NC_Z = 60
 REF_LEVEL_VELKY_BOX = 2
 endTime1 = 80   
-endTime2 = 300
+endTime2 = 1000
 timeForPol = 60
 pRelax1 = 0.01
-pRelax2 = 0.1
+pRelax2 = 0.05
 nProc   = 12
 deltaT3 = 1e-5
 
@@ -86,14 +86,14 @@ for setPar in changes["setPars"]:
 #     ])     
 
 # -- create geometry and run flow simulation on Kuos desktop
-hk1.runCommands \
-(
-    [
-        "chmod 775 -R ./*",
-        "singularity exec -H %s/%s ~/Singularity/%s bash ./geometry" % (hk1.whereIStart,hk1.dir, singularityFl),
-        "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
-    ]
-) 
+# hk1.runCommands \
+# (
+#     [
+#         "chmod 775 -R ./*",
+#         "singularity exec -H %s/%s ~/Singularity/%s bash ./geometry" % (hk1.whereIStart,hk1.dir, singularityFl),
+#         "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
+#     ]
+# ) 
 
 # -- change numerical properties
 for setPar in changes2["setPars"]:
@@ -103,6 +103,7 @@ hk1.runCommands \
 (
     [
         "mv log.simpleFoam log.simpleFoam1",
+        "rm log.*",
         "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
     ]
 ) 
