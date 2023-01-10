@@ -17,6 +17,6 @@ runApplication decomposePar
 runParallel potentialFoam
 runParallel $(getApplication)
 
-runApplication reco nstructPar -latestTime
+runApplication reconstructPar -latestTime
 
 #------------------------------------------------------------------------------
