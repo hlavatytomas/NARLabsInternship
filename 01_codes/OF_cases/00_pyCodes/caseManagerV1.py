@@ -65,7 +65,7 @@ changes2 = \
 # -- prepare case
 hk1 = OpenFOAMCase()
 hk1.loadOFCaseFromBaseCase(bsCsDir)
-hk1.loadOFCaseFromBaseCase(finCsDir)
+# hk1.loadOFCaseFromBaseCase(finCsDir)
 hk1.changeOFCaseDir(finCsDir)
 hk1.copyBaseCase()
 for replace in changes["replaces"]:

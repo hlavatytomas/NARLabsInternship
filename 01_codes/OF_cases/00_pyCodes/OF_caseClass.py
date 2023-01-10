@@ -110,7 +110,7 @@ class OpenFOAMCase:
         for lnI in range(len(linesInFl)):
             if par in linesInFl[lnI] and (inSubDict == "" or (lnI >= subDictSt and lnI <= subDictEnd)):
                 try:
-                    oldVal = linesInFl[lnI].split(par)[1].replace(' ','').replace('\n','').replace(';','')
+                    oldVal = linesInFl[lnI].split(par)[1].replace(' ','').replace('\n','').replace(';','').replace('\t','')
                     if not oldVal == '':
                         linesInFl[lnI] = linesInFl[lnI].replace(oldVal,val)
                         print("In %s, I have set parameter %s in subDictionary '%s' from value %s to value %s on line %d." % (inFl, par, inSubDict,oldVal, val, lnI))
