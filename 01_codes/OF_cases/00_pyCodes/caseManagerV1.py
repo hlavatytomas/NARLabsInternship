@@ -6,7 +6,8 @@
 from OF_caseClass import OpenFOAMCase
 
 # -- parameters 
-bsCsDir = "../01_baseCaseV2"
+# bsCsDir = "../01_baseCaseV2"
+bsCsDir = "../hongKongV1"
 finCsDir = "../ZZ_cases/hongKongV1Dyn"
 singularityFl = "ubuntu3.sif"
 
