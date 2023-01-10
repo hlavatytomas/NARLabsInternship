@@ -8,7 +8,6 @@ from OF_caseClass import OpenFOAMCase
 # -- parameters 
 bsCsDir = "../01_baseCaseV2"
 finCsDir = "../ZZ_cases/hongKongV1"
-singularityFl = "ubuntu3.sif"
 
 # -- blockMesh parameters
 DOMAIN_SIZE_X = 420*2
@@ -84,14 +83,14 @@ for setPar in changes["setPars"]:
 #     ])     
 
 # -- create geometry and run flow simulation on Kuos desktop
-# hk1.runCommands \
-# (
-#     [
-#         "chmod 775 -R ./*",
-#         "singularity exec -H %s/%s ~/Singularity/%s bash ./geometry" % (hk1.whereIStart,hk1.dir, singularityFl),
-#         "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
-#     ]
-# ) 
+hk1.runCommands \
+(
+    [
+        "chmod 775 -R ./*",
+        "singularity exec -H %s/%s ~/Singularity/ubuntu2.sif bash ./geometry" % (hk1.whereIStart,hk1.dir),
+        "singularity exec -H %s/%s ~/Singularity/ubuntu2.sif bash ./simulationFlow" % (hk1.whereIStart,hk1.dir),
+    ]
+) 
 
 # -- change numerical properties
 for setPar in changes2["setPars"]:
@@ -101,7 +100,7 @@ hk1.runCommands \
 (
     [
         "mv log.simpleFoam log.simpleFoam1",
-        "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
+        "singularity exec -H %s/%s ~/Singularity/ubuntu2.sif bash ./simulationFlow" % (hk1.whereIStart,hk1.dir),
     ]
 ) 
 
@@ -114,18 +113,18 @@ hk1.runCommands \
 (
     [
         "cp -r 0/yPol %g/" %(hk1.latestTime),
-        "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationPollution" % (hk1.whereIStart,hk1.dir, singularityFl),
+        "singularity exec -H %s/%s ~/Singularity/ubuntu2.sif bash ./simulationPollution" % (hk1.whereIStart,hk1.dir),
     ]
 )
 
-# -- update times variable and copy pressure field into latestTime for visualizations
-hk1.updateTimes()
-hk1.runCommands \
-(
-    [
-        "cp -r %g/p %g/" %(flLt, hk1.latestTime),
-    ]
-)
+# # -- update times variable and copy pressure field into latestTime for visualizations
+# hk1.updateTimes()
+# hk1.runCommands \
+# (
+#     [
+#         "cp -r %g/p %g/" %(flLt, hk1.latestTime),
+#     ]
+# )
 
         
      

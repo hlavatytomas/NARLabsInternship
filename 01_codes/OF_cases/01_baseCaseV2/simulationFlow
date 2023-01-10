@@ -14,12 +14,9 @@ mv log.decomposePar log.decomposePar1
 runApplication decomposePar
 
 # runParallel patchSummary
-rm -f log.potentialFoam
 runParallel potentialFoam
-rm -f log.simpleFoam
 runParallel $(getApplication)
 
-rm -f log.reconstructPar
-runApplication reconstructPar -latestTime
+runApplication reco nstructPar -latestTime
 
 #------------------------------------------------------------------------------
