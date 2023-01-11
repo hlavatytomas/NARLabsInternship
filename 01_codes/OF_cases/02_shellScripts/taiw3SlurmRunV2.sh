@@ -11,16 +11,9 @@
 
 # -- Slurm script to run simulations on Taiwania 3
 
-# -- parameters for script
-# singularity image file
-singDir="../../singularity/ubuntu2.sif"
-
-# openFoam case dir
-caseDir="../airFlowV1"
-
 # -- load singularity
 module load libs/singularity
 
 # -- run python control
 cd ../00_pyCodes
-python3 -u caseManagerTW3V1.py
+python3 -u caseManagerV1.py
