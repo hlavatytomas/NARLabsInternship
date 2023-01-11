@@ -27,7 +27,7 @@ timeForPol = 60
 pRelax1 = 0.01
 pRelax2 = 0.05
 nProc   = 12
-deltaT3 = 1e-5
+deltaT3 = 1e-3
 
 # -- changes that should be applied when case is created
 changes = \
@@ -86,27 +86,27 @@ for setPar in changes["setPars"]:
 #     ])     
 
 # -- create geometry and run flow simulation on Kuos desktop
-hk1.runCommands \
-(
-    [
-        "chmod 775 -R ./*",
-        "singularity exec -H %s/%s ~/Singularity/%s bash ./geometry" % (hk1.whereIStart,hk1.dir, singularityFl),
-        "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
-    ]
-) 
+# hk1.runCommands \
+# (
+#     [
+#         "chmod 775 -R ./*",
+#         "singularity exec -H %s/%s ~/Singularity/%s bash ./geometry" % (hk1.whereIStart,hk1.dir, singularityFl),
+#         "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
+#     ]
+# ) 
 
 # -- change numerical properties
 for setPar in changes2["setPars"]:
     hk1.setParameter(setPar)
 
-hk1.runCommands \
-(
-    [
-        "mv log.simpleFoam log.simpleFoam1",
-        "rm log.*",
-        "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
-    ]
-) 
+# hk1.runCommands \
+# (
+#     [
+#         "mv log.simpleFoam log.simpleFoam1",
+#         "rm log.*",
+#         "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
+#     ]
+# ) 
 
 # -- update OpenFOAMCase.times variable, copy initial condition for pollution simulation, and run pollution simulation
 hk1.updateTimes()

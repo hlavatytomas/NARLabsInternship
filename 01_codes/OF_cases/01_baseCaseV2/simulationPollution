@@ -10,6 +10,7 @@ runApplication setFields
 mv log.decomposePar log.decomposePar2
 runApplication decomposePar -fields
 # run custom solver pollutionFoam
+rm -rf log.pollutionFoam
 runParallel pollutionFoam
 
 rm -f log.reconstructPar
