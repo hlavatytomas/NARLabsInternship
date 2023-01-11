@@ -23,7 +23,16 @@ regions
     // Set patch values (using ==)
     boxToFace
     {
-        box (50 124 -0.5) (53 127 0.5);
+        box (50 124 -0.5) (56 130 0.5);
+
+        fieldValues
+        (
+            volScalarFieldValue yPol 0.1
+        );
+    }
+    boxToFace
+    {
+        box (100 248 -0.5) (106 254 0.5);
 
         fieldValues
         (

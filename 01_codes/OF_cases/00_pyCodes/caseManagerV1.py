@@ -12,21 +12,21 @@ finCsDir = "../ZZ_cases/hongKongV1Dyn"
 singularityFl = "ubuntu3.sif"
 
 # -- blockMesh parameters
-DOMAIN_SIZE_X = 420*2
+DOMAIN_SIZE_X = 520*2
 DOMAIN_SIZE_Y = 270*2
 DOMAIN_SIZE_MX = -80*2
 DOMAIN_SIZE_MY = -30*2
 DOMAIN_SIZE_Z = 300*2 
-NC_X = 75
-NC_Y = 45
-NC_Z = 60
+NC_X = 80
+NC_Y = 40
+NC_Z = 40
 REF_LEVEL_VELKY_BOX = 2
 endTime1 = 500   
-endTime2 = 3000
+endTime2 = 2000
 timeForPol = 60
 pRelax1 = 0.005
 URelax1 = 0.05
-pRelax2 = 0.01
+pRelax2 = 0.05
 URelax2 = 0.1
 nProc   = 12
 deltaT3 = 1e-3
