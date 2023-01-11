@@ -28,6 +28,7 @@ pRelax1 = 0.01
 pRelax2 = 0.05
 nProc   = 12
 deltaT3 = 1e-3
+wrInt2 = 0.5
 
 # -- changes that should be applied when case is created
 changes = \
@@ -103,7 +104,6 @@ for setPar in changes2["setPars"]:
 (
     [
         "mv log.simpleFoam log.simpleFoam1",
-        "rm log.*",
         "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
     ]
 ) 
@@ -112,7 +112,7 @@ for setPar in changes2["setPars"]:
 hk1.updateTimes()
 flLt = hk1.latestTime
 hk1.setParameter(["system/controlDict", "endTime", str(timeForPol+flLt), ""])
-hk1.setParameter(["system/controlDict", "writeInterval", str(0.5), ""])
+hk1.setParameter(["system/controlDict", "writeInterval", str(wrInt2), ""])
 hk1.setParameter(["system/controlDict", "deltaT", str(deltaT3), ""])
 hk1.replace(["system/fvSchemes","steadyState","Euler"])
 hk1.replace(["system/fvSchemes","bounded",""])
