@@ -17,6 +17,7 @@ runApplication decomposePar
 runParallel potentialFoam
 runParallel $(getApplication)
 
+mv log.reconstructPar log.reconstructPar1
 runApplication reconstructPar -latestTime
 
 #------------------------------------------------------------------------------
