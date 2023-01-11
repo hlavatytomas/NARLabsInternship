@@ -21,11 +21,13 @@ NC_X = 75
 NC_Y = 45
 NC_Z = 60
 REF_LEVEL_VELKY_BOX = 2
-endTime1 = 300   
-endTime2 = 2000
+endTime1 = 500   
+endTime2 = 3000
 timeForPol = 60
-pRelax1 = 0.01
-pRelax2 = 0.02
+pRelax1 = 0.005
+URelax1 = 0.05
+pRelax2 = 0.01
+URelax2 = 0.1
 nProc   = 12
 deltaT3 = 1e-3
 wrInt2 = 0.5
@@ -78,13 +80,13 @@ for setPar in changes["setPars"]:
 
 
 # NOTE: not used for my PC
-# # -- create geometry and run simulation on my PC
-# hk1.runCommands(
-#     [
-#         "bash ./geometry",
-#         "bash ./simulationFlow", 
-#         "bash ./simulationPollution"
-#     ])     
+# -- create geometry and run simulation on my PC
+hk1.runCommands(
+    [
+        "bash ./geometry",
+        "bash ./simulationFlow", 
+        "bash ./simulationPollution"
+    ])     
 
 # -- create geometry and run flow simulation on Kuos desktop
 hk1.runCommands \
