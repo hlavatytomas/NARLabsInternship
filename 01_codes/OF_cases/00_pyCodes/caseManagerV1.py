@@ -100,7 +100,7 @@ hk1.runCommands \
 for setPar in changes2["setPars"]:
     hk1.setParameter(setPar)
 
-# hk1.runCommands \
+hk1.runCommands \
 (
     [
         "mv log.simpleFoam log.simpleFoam1",
