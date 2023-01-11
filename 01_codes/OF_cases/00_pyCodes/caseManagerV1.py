@@ -81,12 +81,12 @@ for setPar in changes["setPars"]:
 
 # NOTE: not used for my PC
 # -- create geometry and run simulation on my PC
-hk1.runCommands(
-    [
-        "bash ./geometry",
-        "bash ./simulationFlow", 
-        "bash ./simulationPollution"
-    ])     
+# hk1.runCommands(
+#     [
+#         "bash ./geometry",
+#         "bash ./simulationFlow", 
+#         "bash ./simulationPollution"
+#     ])     
 
 # -- create geometry and run flow simulation on Kuos desktop
 hk1.runCommands \
