@@ -21,6 +21,7 @@ NC_X = 80
 NC_Y = 40
 NC_Z = 40
 REF_LEVEL_VELKY_BOX = 2
+REF_LEVEL_VETSI_BOX = 1
 endTime1 = 500   
 endTime2 = 2000
 timeForPol = 60
@@ -30,7 +31,7 @@ pRelax2 = 0.05
 URelax2 = 0.1
 nProc   = 12
 deltaT3 = 1e-3
-wrInt2 = 0.5
+wrInt2 = 0.1
 
 # -- changes that should be applied when case is created
 changes = \
@@ -46,6 +47,7 @@ changes = \
             ["system/blockMeshDict", "NC_Y", str(NC_Y)],
             ["system/blockMeshDict", "NC_Z", str(NC_Z)],
             ["system/snappyHexMeshDict", "REF_LEVEL_VELKY_BOX", str(REF_LEVEL_VELKY_BOX)],
+            ["system/snappyHexMeshDict", "REF_LEVEL_VETSI_BOX", str(REF_LEVEL_VETSI_BOX)],
         ],
     "setPars":
         [

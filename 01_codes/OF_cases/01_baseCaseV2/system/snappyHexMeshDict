@@ -16,8 +16,8 @@ FoamFile
 // Which of the steps to run
 castellatedMesh true;
 snap            true;
-// addLayers       true;
-addLayers       false;
+addLayers       true;
+// addLayers       false;
 
 
 // Geometry. Definition of all surfaces. All surfaces are of class
@@ -39,6 +39,12 @@ geometry
         type searchableBox;
         min (-100    0   0.0);
         max (700.0  480 150);
+    }
+    vetsiBox
+    {
+        type searchableBox;
+        min (-100    -1000   0.0);
+        max (700.0  1000 300);
     }
     build1
     {
@@ -150,7 +156,7 @@ castellatedMeshControls
         {
             // Surface-wise min and max refinement level
             // level (2 2);
-            level (3 4);
+            level (3 3);
 
             // Optional specification of patch type (default is wall). No
             // constraint types (cyclic, symmetry) etc. are allowed.
@@ -223,6 +229,11 @@ castellatedMeshControls
         {
             mode    inside;
             level   REF_LEVEL_VELKY_BOX;
+        }        
+        vetsiBox
+        {
+            mode    inside;
+            level   REF_LEVEL_VETSI_BOX;
         }
     }
 
@@ -251,7 +262,7 @@ snapControls
 {
     //- Number of patch smoothing iterations before finding correspondence
     //  to surface
-    nSmoothPatch 3;
+    nSmoothPatch 5;
 
     //- Relative distance for points to be attracted by surface feature point
     //  or edge. True distance is this factor times local
@@ -307,7 +318,7 @@ addLayersControls
     // is the thickness of the layer furthest away from the wall.
     // Relative to undistorted size of cell outside layer.
     // See relativeSizes parameter.
-    finalLayerThickness 0.3;
+    finalLayerThickness 0.7;
 
     // Minimum thickness of cell layer. If for any reason layer
     // cannot be above minThickness do not add layer.

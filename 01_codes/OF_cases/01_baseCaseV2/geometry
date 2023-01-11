@@ -18,5 +18,6 @@ runApplication decomposePar -copyZero
 runParallel snappyHexMesh -overwrite
 
 runApplication reconstructParMesh -constant
+runApplication checkMesh
 
 #------------------------------------------------------------------------------
