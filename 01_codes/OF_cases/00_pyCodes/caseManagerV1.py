@@ -8,7 +8,7 @@ from OF_caseClass import OpenFOAMCase
 # -- parameters 
 bsCsDir = "../01_baseCaseV2"
 # bsCsDir = "../ZZ_cases/hongKongV1Dyn"
-finCsDir = "../ZZ_cases/hongKongV1Dyn"
+finCsDir = "../ZZ_cases/hongKongV2Dyn"
 singularityFl = "ubuntu3.sif"
 
 # -- blockMesh parameters
@@ -29,6 +29,9 @@ pRelax1 = 0.005
 URelax1 = 0.05
 pRelax2 = 0.05
 URelax2 = 0.1
+USch2 = "bounded Gauss SFCD"
+epsSch2 = "bounded Gauss SFCD"
+kSch2 = "bounded Gauss SFCD"
 nProc   = 12
 deltaT3 = 1e-3
 wrInt2 = 0.1
@@ -65,6 +68,9 @@ changes2 = \
     [
         ["system/controlDict", "endTime", str(endTime2), ""],
         ["system/controlDict", "writeInterval", str(endTime2), ""],
+        ["system/fvSchemes", "div(phi,U)", str(USch2), "divSchemes"],
+        ["system/fvSchemes", "div(phi,epsilon)", str(epsSch2), "divSchemes"],
+        ["system/fvSchemes", "div(phi,k)", str(kSch2), "divSchemes"],
         ["system/fvSolution", "p ", str(pRelax2), "fields"],
     ]
 }
