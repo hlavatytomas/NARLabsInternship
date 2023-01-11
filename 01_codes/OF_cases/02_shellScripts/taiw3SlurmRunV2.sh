@@ -1,7 +1,8 @@
 #!/bin/bash
 ##SBATCH -n 6
 #SBATCH -J testOF10
-#SBATCH -p ctest                # partition
+#SBATCH -p ct56                # partition
+#SBATCH -t 12:00:00
 #SBATCH --account=GOV109092     # computing resource wallet ID
 #SBATCH --ntasks=6              # (-n) Number of MPI tasks (i.e. processes)
 ##SBATCH --cpus-per-task=4       # (-c) Number of cores per MPI task
@@ -22,4 +23,4 @@ module load libs/singularity
 
 # -- run python control
 cd ../00_pyCodes
-python3 caseManagerTW3V1.py
+python3 -u caseManagerTW3V1.py
