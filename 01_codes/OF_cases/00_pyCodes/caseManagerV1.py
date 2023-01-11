@@ -7,8 +7,8 @@ from OF_caseClass import OpenFOAMCase
 
 # -- parameters 
 bsCsDir = "../01_baseCaseV2"
-# bsCsDir = "../ZZ_cases/hongKongV1"
-finCsDir = "../ZZ_cases/hongKongV1Dyn"
+bsCsDir = "../ZZ_cases/hongKongV1Dyn"
+finCsDir = "../ZZ_cases/hongKongV1Dyn2"
 singularityFl = "ubuntu3.sif"
 
 # -- blockMesh parameters
