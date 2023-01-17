@@ -1,9 +1,12 @@
 \cleardoublepage
-
-\section{Used computational environment setup}
+\section{Computational environment}
 \label{sec:env}
 
-NCHC servers use singularity container~\cite{singularity}.
+NCHC servers use Singularity container platform~\cite{singularity} and Slurm workload manager~\cite{slurm} to run user-defined tasks. Thus,  
+\begin{enumerate}[(i)]
+    \item custom singularity container, which includes necessary applications and packages installed inside, is prepared, and
+    \item slurm task (which works within the container) is prepared and run at the computational server.
+\end{enumerate}
 
 \subsection{Preparation of the singularity container}
 \label{subsec:prepCont}
@@ -30,13 +33,7 @@ Assuming you have super-user permission and singularity installed, a preparation
     \texttt{sudo singularity build ubuntu.sif ./ubuntu/}
 \end{itemize}
 
-Following the above listed guideline, singularity container image \texttt{ubuntu.sif} is created. This can be deported to NCHC servers and used. 
+Following the above listed guideline, singularity container image \texttt{ubuntu.sif} is created. This can be uploaded to NCHC servers and used as described in following subsection. 
 
-\subsection{Developed OpenFOAMCase python class documentation}
-\label{subsec:ofCaseClass}
-To easily prepare and handle all the 
-
-\section{Model description}
-\label{sec:modDesc}
-
-\noteTH{Models description here.}
+\subsection{Preparation of slurm control script and running of task}
+\label{subsec:}
