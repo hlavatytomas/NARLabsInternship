@@ -6,6 +6,7 @@
 # --                    baseDir -- base case directory
 # --            -- loadOFCaseFromOFCase(parent)
 # --                    parent -- OpenFOAMCase you want to load from
+# --                NOTE: does not work so far
 # --        2) (optional) change OpenFOAMCase.dir (where the changes will be made), default -- baseDir
 # --            -- changeOFCaseDir(dir)
 # --        3) (optional) copy OpenFOAMCase.basedir to OpenFOAMCase.dir
@@ -25,7 +26,7 @@
 # --                and OpenFOAMCase.latestTime variable (max of OpenFOAMCase.times)
 
 # --    TODO:
-# --        1) connect with Luckas blockMeshDict class
+# --        1) connect with Lucka blockMeshDict class
 
 # -- imports 
 import numpy as np
@@ -66,22 +67,26 @@ class OpenFOAMCase:
         sh.copytree(self.baseDir,self.dir)
         print("OpenFOAMCase.baseDir has been copied to OpenFOAMCase.dir:\n\t %s --> %s"%(self.baseDir,self.dir))
 
-    def replace(self, replace):
+    def replace(self, replaces):
         """replace option -- replace = [in inFl (file), what (string), by (string)]"""
         # -- move to OpenFOAMCase directory 
         os.chdir(self.dir)
 
         # -- make the replaces
-        inFl, what, by = replace
-        with open(inFl, 'r') as fl:
-            linesInFl = fl.readlines()
-        for lnI in range(len(linesInFl)):
-            if what in linesInFl[lnI]:
-                linesInFl[lnI] = linesInFl[lnI].replace(what,by)
-                print("In %s, I have replaced %s by %s on line %d." % (inFl, what, by, lnI))
-        with open(inFl, 'w') as fl:
+        for replace in replaces:
+            inFl, what, by = replace
+            with open(inFl, 'r') as fl:
+                linesInFl = fl.readlines()
             for lnI in range(len(linesInFl)):
-                fl.writelines(linesInFl[lnI])
+                for whatI in range(len(what)):
+                    whatTu = what[whatI]
+                    byTu = by[whatI]
+                    if whatTu in linesInFl[lnI]:
+                        linesInFl[lnI] = linesInFl[lnI].replace(whatTu,byTu)
+                        print("In %s, I have replaced %s by %s on line %d." % (inFl, whatTu, byTu, lnI))
+            with open(inFl, 'w') as fl:
+                for lnI in range(len(linesInFl)):
+                    fl.writelines(linesInFl[lnI])
         
         # -- move back where I start
         os.chdir(self.whereIStart)
