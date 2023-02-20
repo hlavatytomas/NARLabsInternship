@@ -61,6 +61,49 @@
       \verb 10.3390/atmos13101640
       \endverb
     \endentry
+    \entry{kadaverugu21}{article}{}
+      \name{author}{4}{}{%
+        {{hash=8be032248e58c9765861ce53aa3fbc42}{%
+           family={Kadaverugu},
+           familyi={K\bibinitperiod},
+           given={Rakesh},
+           giveni={R\bibinitperiod}}}%
+        {{hash=d82b48d61f82690acc0b103a35425a99}{%
+           family={Purohit},
+           familyi={P\bibinitperiod},
+           given={Vigna},
+           giveni={V\bibinitperiod}}}%
+        {{hash=caf495a510ea89718c284637be21289b}{%
+           family={Matli},
+           familyi={M\bibinitperiod},
+           given={Chandrasekhar},
+           giveni={C\bibinitperiod}}}%
+        {{hash=c86213971398ec14117f95475a29d67f}{%
+           family={Biniwale},
+           familyi={B\bibinitperiod},
+           given={Rajesh},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{50078b4741624770ef8db4245e4b341a}
+      \strng{fullhash}{dd6c8aafdbb23287524de3e44294cc50}
+      \strng{bibnamehash}{50078b4741624770ef8db4245e4b341a}
+      \strng{authorbibnamehash}{50078b4741624770ef8db4245e4b341a}
+      \strng{authornamehash}{50078b4741624770ef8db4245e4b341a}
+      \strng{authorfullhash}{dd6c8aafdbb23287524de3e44294cc50}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Urban Climate}
+      \field{title}{Improving accuracy in simulation of urban wind flows by dynamic downscaling WRF with OpenFOAM}
+      \field{volume}{38}
+      \field{year}{2021}
+      \field{pages}{100912}
+      \range{pages}{1}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.uclim.2021.100912
+      \endverb
+    \endentry
     \entry{singularity}{misc}{}
       \name{author}{1}{}{%
         {{hash=c1f190a3d1b70d4cfa882bb01892fd64}{%
@@ -76,8 +119,8 @@
       \strng{authornamehash}{c1f190a3d1b70d4cfa882bb01892fd64}
       \strng{authorfullhash}{c1f190a3d1b70d4cfa882bb01892fd64}
       \field{extraname}{1}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://docs.sylabs.io/guides/main/user-guide.pdf}}
@@ -108,8 +151,8 @@
       \strng{authorbibnamehash}{47abe5de33a61592357422747357b53e}
       \strng{authornamehash}{47abe5de33a61592357422747357b53e}
       \strng{authorfullhash}{47abe5de33a61592357422747357b53e}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Job Scheduling Strategies for Parallel Processing}
@@ -131,8 +174,8 @@
       \strng{authornamehash}{c1f190a3d1b70d4cfa882bb01892fd64}
       \strng{authorfullhash}{c1f190a3d1b70d4cfa882bb01892fd64}
       \field{extraname}{2}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://docs.sylabs.io/guides/3.0/user-guide/installation.html}}

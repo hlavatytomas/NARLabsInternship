@@ -45,6 +45,7 @@
 
 # literature folder because I cant share those
 02_literature/*
+01_codes/postProcessing
 
 # python 
 *__pycache__

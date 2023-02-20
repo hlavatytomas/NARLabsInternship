@@ -61,9 +61,7 @@ As stated, the air flow and the spread of the pollution in the inhabited area is
     \label{fig:mesh1}
 \end{figure}
 
-\paragraph{Boundary conditions} The model behavior in the computational domain ($\Omega$) is described by partial differential equations outlined in the following subsection~\ref{subsec:govEq} (\nameref{subsec:govEq}). However, these need to be supplied with the consistent boundary conditions on the $\Omega$ boundary, $\partial\Omega$. 
-
-As depicted in Figure~\ref{fig:bc}, the computational domain boundary is split into 
+\paragraph{Boundary conditions} The model behavior in the computational domain ($\Omega$) is described by partial differential equations outlined in the following subsection~\ref{subsec:govEq} (\nameref{subsec:govEq}). However, these need to be supplied with the consistent boundary conditions on the $\Omega$ boundary, $\partial\Omega$. As depicted in Figure~\ref{fig:bc}, the computational domain boundary is split into 
 \begin{inparaenum}[(i)]
     \item \textit{inlet} ($\partial\Omega_{\mathrm{i}}$),
     \item \textit{outlet} ($\partial\Omega_{\mathrm{o}}$),
@@ -90,6 +88,28 @@ As depicted in Figure~\ref{fig:bc}, the computational domain boundary is split i
     \caption{Boundaries of the computational domain.}
     \label{fig:bc}
 \end{figure}
+
+Used boundary conditions are utilized from~\cite{kadaverugu21,Pantusheva22} and summarized in Table~\ref{tab:bc}. 
+
+\begin{table}[htbp]
+    \caption{Used boundary conditions.}
+    \label{tab:bc}
+    \centering
+    {
+    \begin{tabular}{lccccccccc}
+        \hline
+        variable & $\Omega_{\mathrm{i}}$ & $\Omega_{\mathrm{o}}$ & $\Omega_{\mathrm{g}}$ &  $\Omega_{\mathrm{s}}$ & $\Omega_{\mathrm{t}}$ \\
+        \hline
+        $\bm{u}$ & fixedValue & inletOutlet & noSlip & slip & slip\\
+        $p$ & zeroGrad & totalPressure & zeroGrad & zeroGrad & zeroGrad\\
+        $k$ & turbIntKinEngInlet & zeroGrad & kqRWallFunction & zeroGrad & zeroGrad\\
+        $\varepsilon$ & turbMixDissRateInlet & zeroGrad & epsWallFunction & zeroGrad & zeroGrad\\
+        $\nu_{\mathrm{t}}$ & fixedValue & zeroGrad & nutkWallFunction & zeroGrad & zeroGrad\\
+        $y_{\mathrm{P}}$ & zeroGrad & zeroGrad & fixedValue & zeroGrad & zeroGrad\\
+        \hline
+    \end{tabular}
+    }
+\end{table}
 
 \subsection{Governing equations}
 \label{subsec:govEq}
