@@ -4,36 +4,53 @@
 
 NCHC servers use Singularity container platform~\cite{singularity} and Slurm workload manager~\cite{slurm} to run user-defined tasks. Thus,  
 \begin{enumerate}[(i)]
-    \item custom singularity container, which includes necessary applications and packages installed inside, is prepared, and
-    \item slurm task (which works within the container) is prepared and run at the computational server.
+    \item custom singularity container, which includes necessary packages installed and compiled inside, is prepared, and
+    \item Slurm task (which runs within the container) is prepared and run at the computational server.
 \end{enumerate}
 
 \subsection{Preparation of the singularity container}
 \label{subsec:prepCont}
 
-Assuming you have super-user permission and singularity installed, a preparation of the singularity container image from docker ubuntu:latest release and with openfoam.org/v10 and other useful applications installed inside can be done as follows:
-\begin{itemize}
-    \item Navigate outside the home directory, e.g. \texttt{/tmp/test/} and work here.
-    \item New container (\texttt{./ubuntu}) is created from ubuntu docker repository, \texttt{----sandbox} flag allows to write into it later:\\[0.2cm] 
-    \texttt{sudo singularity build ----sandbox ./ubuntu docker://ubuntu:latest}
-    \item Shell inside container is opened with \texttt{----writable} flag to install necessary stuff into container:\\[0.2cm] 
-    \texttt{sudo singularity shell ./ubuntu ----writable}
-    \item Installation of the basic applications and openfoam.org/v10 into container:\\[0.2cm] 
-    \texttt{apt update}\\
-    \texttt{apt install python3 python3-pip wget vim software-properties-common \\ \indent\quad\quad python3-tk}\\
-    \texttt{pip3 install matplotlib}\\
-    \texttt{sh -c "wget -O - https://dl.openfoam.org/gpg.key >} \\ \indent\quad\quad\texttt{/etc/apt/trusted.gpg.d/openfoam.asc"}\\
-    \texttt{add-apt-repository http://dl.openfoam.org/ubuntu}\\
-    \texttt{apt update}\\
-    \texttt{apt install openfoam10}
-    \item If you want to compile custom openfoam solver, source openfoam in container:\\[0.2cm] 
-    \texttt{. /opt/openfoam10/etc/bashrc}
-    \item and compile it using \texttt{wmake} in prepared solver directory (in our case in\\ \texttt{./01\_codes/OF\_cases/03\_customSolvers/pollutionFoam}).
-    \item When everything is installed, the \texttt{.sif} container file can be build using:\\[0.2cm] 
-    \texttt{sudo singularity build ubuntu.sif ./ubuntu/}
-\end{itemize}
+Assuming you have super-user permission and singularity installed on local (see step-by-step guide in \cite{singularityInstall}), a preparation of the singularity container image from docker ubuntu:latest release can be done as follows: 
+\begin{enumerate}
+    \item Navigate outside the home directory and work here, e.g.: \\[0.2cm] 
+    \texttt{mkdir /tmp/} \\[0.2cm] 
+    \texttt{mkdir /tmp/test} \\[0.2cm] 
+    \texttt{cd /tmp/test/} 
+    \item New container (\texttt{./ubuntu}) can be built from ubuntu docker repository using:\\[0.2cm] 
+    \texttt{sudo singularity build ----sandbox ./ubuntu docker://ubuntu:latest}\\[0.2cm] 
+    {NOTE:} \texttt{----sandbox} flag allows to write into container later
+\end{enumerate}
+
+Shell inside container can be opened using: \\[0.2cm]
+\indent\quad\quad\texttt{sudo singularity shell ./ubuntu ----writable} \\[0.2cm]
+where \texttt{----writable} flag again allows to write into container and install packages here.
+
+Openfoam.org/v10 and other used packages can be installed inside the container as:\\[0.2cm]
+    \indent\quad\quad\texttt{apt update}\\[0.2cm]
+    \indent\quad\quad\texttt{apt install python3 python3-pip wget vim software-properties-common \\ \indent\quad\quad\quad\quad python3-tk}
+    \indent\quad\quad\texttt{pip3 install matplotlib}\\[0.2cm]
+    \indent\quad\quad\texttt{sh -c "wget -O - https://dl.openfoam.org/gpg.key >} \\ \indent\quad\quad\quad\quad\texttt{/etc/apt/trusted.gpg.d/openfoam.asc"}\\[0.2cm]
+    \indent\quad\quad\texttt{add-apt-repository http://dl.openfoam.org/ubuntu}\\[0.2cm]
+    \indent\quad\quad\texttt{apt update}\\[0.2cm]
+    \indent\quad\quad\texttt{apt install openfoam10}
+
+Compilation of the custom solver inside container is done as follows:
+\begin{enumerate}
+    \item Source OpenFOAM in the container shell:\\[0.2cm] 
+    \indent\quad\quad\texttt{. /opt/openfoam10/etc/bashrc}
+    \item Navigate to solver folder, e.g.:\\[0.2cm] 
+    \indent\quad\quad\texttt{cd /tmp/pollutionFoam} 
+    \item Compile solver executing: \\[0.2cm] 
+    \indent\quad\quad\texttt{wmake}.
+\end{enumerate}
+
+When everything is installed, the \texttt{.sif} container file can be built from prepared \texttt{/tmp/test/ubuntu} directory using:\\[0.2cm] 
+\indent\quad\quad\texttt{sudo singularity build /tmp/test/ubuntu.sif /tmp/test/ubuntu/}
+
 
 Following the above listed guideline, singularity container image \texttt{ubuntu.sif} is created. This can be uploaded to NCHC servers and used as described in following subsection. 
 
-\subsection{Preparation of slurm control script and running of task}
-\label{subsec:}
+\subsection{Preparation of Slurm control script and running the task}
+\label{subsec:slurmCtrl}
+

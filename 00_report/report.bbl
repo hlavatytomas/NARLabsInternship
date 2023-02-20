@@ -16,5 +16,130 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{Pantusheva22}{article}{}
+      \name{author}{4}{}{%
+        {{hash=31afdb4f66e255086f7e21d952cc0ac2}{%
+           family={Pantusheva},
+           familyi={P\bibinitperiod},
+           given={Mariya},
+           giveni={M\bibinitperiod}}}%
+        {{hash=85c1873758fc8c83e1f7b5d21ca06330}{%
+           family={Mitkov},
+           familyi={M\bibinitperiod},
+           given={Radostin},
+           giveni={R\bibinitperiod}}}%
+        {{hash=6e32f2987ee0423e25ff8b007a66e8c3}{%
+           family={Hristov},
+           familyi={H\bibinitperiod},
+           given={Petar\bibnamedelima O.},
+           giveni={P\bibinitperiod\bibinitdelim O\bibinitperiod}}}%
+        {{hash=993f14087f6e1ee814808edeead81491}{%
+           family={Petrova-Antonova},
+           familyi={P\bibinithyphendelim A\bibinitperiod},
+           given={Dessislava},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{4a0bac40c3c865ecc858263b4e7d0242}
+      \strng{fullhash}{cf8ef7dc226a6f6f7df8911df463cd46}
+      \strng{bibnamehash}{4a0bac40c3c865ecc858263b4e7d0242}
+      \strng{authorbibnamehash}{4a0bac40c3c865ecc858263b4e7d0242}
+      \strng{authornamehash}{4a0bac40c3c865ecc858263b4e7d0242}
+      \strng{authorfullhash}{cf8ef7dc226a6f6f7df8911df463cd46}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Atmosphere}
+      \field{number}{10}
+      \field{title}{Air Pollution Dispersion Modelling in Urban Environment Using CFD: A Systematic Review}
+      \field{volume}{13}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.3390/atmos13101640
+      \endverb
+    \endentry
+    \entry{singularity}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=c1f190a3d1b70d4cfa882bb01892fd64}{%
+           family={Contributors},
+           familyi={C\bibinitperiod},
+           given={SingularityCE\bibnamedelima Project},
+           giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{c1f190a3d1b70d4cfa882bb01892fd64}
+      \strng{fullhash}{c1f190a3d1b70d4cfa882bb01892fd64}
+      \strng{bibnamehash}{c1f190a3d1b70d4cfa882bb01892fd64}
+      \strng{authorbibnamehash}{c1f190a3d1b70d4cfa882bb01892fd64}
+      \strng{authornamehash}{c1f190a3d1b70d4cfa882bb01892fd64}
+      \strng{authorfullhash}{c1f190a3d1b70d4cfa882bb01892fd64}
+      \field{extraname}{1}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://docs.sylabs.io/guides/main/user-guide.pdf}}
+      \field{note}{Accessed: 20-2-2023}
+      \field{title}{SingularityCE User Guide}
+    \endentry
+    \entry{slurm}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=d3b6ff35b862d01d63e6dc7633117988}{%
+           family={Yoo},
+           familyi={Y\bibinitperiod},
+           given={Andy\bibnamedelima B.},
+           giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=77b6b203518abbdf50a57f097d6aba4f}{%
+           family={Jette},
+           familyi={J\bibinitperiod},
+           given={Morris\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=cec1424e1823d2e4b65287af64bb4c79}{%
+           family={Grondona},
+           familyi={G\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{47abe5de33a61592357422747357b53e}
+      \strng{fullhash}{47abe5de33a61592357422747357b53e}
+      \strng{bibnamehash}{47abe5de33a61592357422747357b53e}
+      \strng{authorbibnamehash}{47abe5de33a61592357422747357b53e}
+      \strng{authornamehash}{47abe5de33a61592357422747357b53e}
+      \strng{authorfullhash}{47abe5de33a61592357422747357b53e}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Job Scheduling Strategies for Parallel Processing}
+      \field{title}{SLURM: Simple Linux Utility for Resource Management}
+      \field{year}{2003}
+    \endentry
+    \entry{singularityInstall}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=c1f190a3d1b70d4cfa882bb01892fd64}{%
+           family={Contributors},
+           familyi={C\bibinitperiod},
+           given={SingularityCE\bibnamedelima Project},
+           giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{c1f190a3d1b70d4cfa882bb01892fd64}
+      \strng{fullhash}{c1f190a3d1b70d4cfa882bb01892fd64}
+      \strng{bibnamehash}{c1f190a3d1b70d4cfa882bb01892fd64}
+      \strng{authorbibnamehash}{c1f190a3d1b70d4cfa882bb01892fd64}
+      \strng{authornamehash}{c1f190a3d1b70d4cfa882bb01892fd64}
+      \strng{authorfullhash}{c1f190a3d1b70d4cfa882bb01892fd64}
+      \field{extraname}{2}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://docs.sylabs.io/guides/3.0/user-guide/installation.html}}
+      \field{note}{Accessed: 20-2-2023}
+      \field{title}{SingularityCE Installation}
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

@@ -1,36 +1,23 @@
 [0] Config.pm:307> INFO - This is Biber 2.17
 [0] Config.pm:310> INFO - Logfile is 'report.blg'
-[58] biber:340> INFO - === Tue Jan 17, 2023, 16:03:05
-[69] Biber.pm:418> INFO - Reading 'report.bcf'
-[111] Biber.pm:972> INFO - Found 2 citekeys in bib section 0
-[121] Biber.pm:4383> INFO - Processing section 0
-[129] Biber.pm:4574> INFO - Looking for bibtex file './10_bibFiles/books.bib' for section 0
-[130] bibtex.pm:1713> INFO - LaTeX decoding ...
-[136] bibtex.pm:1518> INFO - Found BibTeX data source './10_bibFiles/books.bib'
-[147] Biber.pm:4574> INFO - Looking for bibtex file './10_bibFiles/references.bib' for section 0
-[149] bibtex.pm:1713> INFO - LaTeX decoding ...
-[216] bibtex.pm:1518> INFO - Found BibTeX data source './10_bibFiles/references.bib'
-[221] Biber.pm:4574> INFO - Looking for bibtex file '10_bibFiles/others.bib' for section 0
-[222] bibtex.pm:1713> INFO - LaTeX decoding ...
-[225] bibtex.pm:1518> INFO - Found BibTeX data source '10_bibFiles/others.bib'
-[226] Biber.pm:4574> INFO - Looking for bibtex file '10_bibFiles/theses.bib' for section 0
-[226] bibtex.pm:1713> INFO - LaTeX decoding ...
-[230] bibtex.pm:1518> INFO - Found BibTeX data source '10_bibFiles/theses.bib'
-[236] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[236] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
-[236] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-GB'
-[236] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-GB'
-[236] bbl.pm:654> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[236] bbl.pm:757> INFO - Output to report.bbl
-[237] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'moukalled16' and 'Moukalled16' in file './10_bibFiles/references.bib'
-[237] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'ferziger02' and 'Ferziger02' in file './10_bibFiles/references.bib'
-[237] Biber.pm:130> WARN - Duplicate entry key: 'roenby16' in file './10_bibFiles/references.bib', skipping ...
-[237] Biber.pm:130> WARN - Duplicate entry key: 'roenby17' in file './10_bibFiles/references.bib', skipping ...
-[237] Biber.pm:130> WARN - Duplicate entry key: 'OpenFOAM2007' in file '10_bibFiles/others.bib', skipping ...
-[237] Biber.pm:130> WARN - Duplicate entry key: 'oFUserGuide' in file '10_bibFiles/others.bib', skipping ...
-[237] Biber.pm:130> WARN - Duplicate entry key: 'oFProgrGuide' in file '10_bibFiles/others.bib', skipping ...
-[237] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'Jasak96' and 'jasak96' in file '10_bibFiles/theses.bib'
-[237] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'Rusche02' and 'rusche02' in file '10_bibFiles/theses.bib'
-[237] Biber.pm:130> WARN - I didn't find a database entry for 'singularity' (section 0)
-[237] Biber.pm:130> WARN - I didn't find a database entry for 'slurm' (section 0)
-[237] Biber.pm:132> INFO - WARNINGS: 11
+[71] biber:340> INFO - === Mon Feb 20, 2023, 08:45:04
+[88] Biber.pm:418> INFO - Reading 'report.bcf'
+[137] Biber.pm:972> INFO - Found 4 citekeys in bib section 0
+[149] Biber.pm:4383> INFO - Processing section 0
+[159] Biber.pm:4574> INFO - Looking for bibtex file './10_bibFiles/books.bib' for section 0
+[160] bibtex.pm:1713> INFO - LaTeX decoding ...
+[167] bibtex.pm:1518> INFO - Found BibTeX data source './10_bibFiles/books.bib'
+[179] Biber.pm:4574> INFO - Looking for bibtex file './10_bibFiles/references.bib' for section 0
+[183] bibtex.pm:1713> INFO - LaTeX decoding ...
+[259] bibtex.pm:1518> INFO - Found BibTeX data source './10_bibFiles/references.bib'
+[315] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[315] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
+[316] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-GB'
+[316] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-GB'
+[320] bbl.pm:654> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[322] bbl.pm:757> INFO - Output to report.bbl
+[322] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'moukalled16' and 'Moukalled16' in file './10_bibFiles/references.bib'
+[323] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'ferziger02' and 'Ferziger02' in file './10_bibFiles/references.bib'
+[323] Biber.pm:130> WARN - Duplicate entry key: 'roenby16' in file './10_bibFiles/references.bib', skipping ...
+[323] Biber.pm:130> WARN - Duplicate entry key: 'roenby17' in file './10_bibFiles/references.bib', skipping ...
+[323] Biber.pm:132> INFO - WARNINGS: 4
