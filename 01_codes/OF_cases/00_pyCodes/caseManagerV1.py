@@ -94,7 +94,7 @@ hk1.runCommands \
     [
         "chmod 775 -R ./*",
         "singularity exec -H %s/%s ~/Singularity/%s bash ./geometry" % (hk1.whereIStart,hk1.dir, singularityFl),
-        # "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
+        "singularity exec -H %s/%s ~/Singularity/%s bash ./simulationFlow" % (hk1.whereIStart,hk1.dir, singularityFl),
     ]
 ) 
 
