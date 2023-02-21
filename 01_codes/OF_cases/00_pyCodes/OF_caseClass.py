@@ -29,7 +29,7 @@
 # --        1) connect with Lucka blockMeshDict class
 
 # -- imports 
-import numpy as np
+# import numpy as np
 import os
 import shutil as sh
 from myAddFcs import *

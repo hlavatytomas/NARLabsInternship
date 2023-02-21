@@ -44,7 +44,7 @@ geometry
     {
         type searchableBox;
         min (-100    -1000   0.0);
-        max (700.0  1000 300);
+        max (1500.0  1000 300);
     }
     build1
     {
@@ -122,7 +122,7 @@ castellatedMeshControls
     // Number of buffer layers between different levels.
     // 1 means normal 2:1 refinement restriction, larger means slower
     // refinement.
-    nCellsBetweenLevels 5;
+    nCellsBetweenLevels 7;
 
 
 
@@ -156,7 +156,7 @@ castellatedMeshControls
         {
             // Surface-wise min and max refinement level
             // level (2 2);
-            level (3 3);
+            level (3 4);
 
             // Optional specification of patch type (default is wall). No
             // constraint types (cyclic, symmetry) etc. are allowed.
