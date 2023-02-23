@@ -104,6 +104,178 @@
       \verb https://doi.org/10.1016/j.uclim.2021.100912
       \endverb
     \endentry
+    \entry{moukalled16}{book}{}
+      \name{author}{3}{}{%
+        {{hash=090a7ac77260a7ca9bc89d916f36f898}{%
+           family={Moukalled},
+           familyi={M\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+        {{hash=2ab2b6dd25340d302e0592af4ff96e03}{%
+           family={Darwish},
+           familyi={D\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=1ff4954c3e58a8b001eb53e8269c3438}{%
+           family={Mangani},
+           familyi={M\bibinitperiod},
+           given={L.},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Germany}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{af3e71aab4de845f096a2a7223ae6882}
+      \strng{fullhash}{af3e71aab4de845f096a2a7223ae6882}
+      \strng{bibnamehash}{af3e71aab4de845f096a2a7223ae6882}
+      \strng{authorbibnamehash}{af3e71aab4de845f096a2a7223ae6882}
+      \strng{authornamehash}{af3e71aab4de845f096a2a7223ae6882}
+      \strng{authorfullhash}{af3e71aab4de845f096a2a7223ae6882}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1}
+      \field{isbn}{978-3-319-16874-6}
+      \field{title}{The finite volume method in computational fluid dynamics: an advanced introduction with {O}pen{FOAM} and {M}atlab}
+      \field{year}{2016}
+    \endentry
+    \entry{launder1974}{article}{}
+      \name{author}{2}{}{%
+        {{hash=f7a6b6b0e95a7f2bafaa1fa146cc8b5b}{%
+           family={Launder},
+           familyi={L\bibinitperiod},
+           given={B.E.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=866e6320d12fd222a95386eaf31f5302}{%
+           family={Spalding},
+           familyi={S\bibinitperiod},
+           given={D.B.},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{0902c3b60cde93b3bc8eab511ffc862b}
+      \strng{fullhash}{0902c3b60cde93b3bc8eab511ffc862b}
+      \strng{bibnamehash}{0902c3b60cde93b3bc8eab511ffc862b}
+      \strng{authorbibnamehash}{0902c3b60cde93b3bc8eab511ffc862b}
+      \strng{authornamehash}{0902c3b60cde93b3bc8eab511ffc862b}
+      \strng{authorfullhash}{0902c3b60cde93b3bc8eab511ffc862b}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Comp. Meth. App. Mech. Eng.}
+      \field{title}{The numerical computation of turbulent flows}
+      \field{volume}{3}
+      \field{year}{1974}
+      \field{pages}{269\bibrangedash 289}
+      \range{pages}{21}
+    \endentry
+    \entry{baik03}{article}{}
+      \name{author}{3}{}{%
+        {{hash=c11aa57f5a88740a33faf6fea82af980}{%
+           family={Baik},
+           familyi={B\bibinitperiod},
+           given={Jong-Jin},
+           giveni={J\bibinithyphendelim J\bibinitperiod}}}%
+        {{hash=10534b6dbef61684a032a667b8b19ba4}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Jae-Jin},
+           giveni={J\bibinithyphendelim J\bibinitperiod}}}%
+        {{hash=622c01a0d5eeadf6402253fed0d5623f}{%
+           family={Fernando},
+           familyi={F\bibinitperiod},
+           given={Harindra\bibnamedelimb J.\bibnamedelimi S.},
+           giveni={H\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{a5ac7c5fee25a204d0060d5e37ded496}
+      \strng{fullhash}{a5ac7c5fee25a204d0060d5e37ded496}
+      \strng{bibnamehash}{a5ac7c5fee25a204d0060d5e37ded496}
+      \strng{authorbibnamehash}{a5ac7c5fee25a204d0060d5e37ded496}
+      \strng{authornamehash}{a5ac7c5fee25a204d0060d5e37ded496}
+      \strng{authorfullhash}{a5ac7c5fee25a204d0060d5e37ded496}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Applied Meteorology}
+      \field{number}{11}
+      \field{title}{A CFD Model for Simulating Urban Flow and Dispersion}
+      \field{volume}{42}
+      \field{year}{2003}
+      \field{pages}{1636\bibrangedash 1648}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1175/1520-0450(2003)042<1636:ACMFSU>2.0.CO;2
+      \endverb
+    \endentry
+    \entry{sutherland1893}{article}{}
+      \name{author}{1}{}{%
+        {{hash=b2ddb4ab43f244243e3a9447955e097a}{%
+           family={Sutherland},
+           familyi={S\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{b2ddb4ab43f244243e3a9447955e097a}
+      \strng{fullhash}{b2ddb4ab43f244243e3a9447955e097a}
+      \strng{bibnamehash}{b2ddb4ab43f244243e3a9447955e097a}
+      \strng{authorbibnamehash}{b2ddb4ab43f244243e3a9447955e097a}
+      \strng{authornamehash}{b2ddb4ab43f244243e3a9447955e097a}
+      \strng{authorfullhash}{b2ddb4ab43f244243e3a9447955e097a}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Phil. Mag. S. 5}
+      \field{title}{The viscosity of gases and molecular force}
+      \field{volume}{36}
+      \field{year}{1893}
+      \field{pages}{507\bibrangedash 531}
+      \range{pages}{25}
+    \endentry
+    \entry{fuller66}{article}{}
+      \name{author}{3}{}{%
+        {{hash=26a18277feef905e644ba9e45b403dac}{%
+           family={Fuller},
+           familyi={F\bibinitperiod},
+           given={E.\bibnamedelimi N.},
+           giveni={E\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=4ceee67789856cfffff2083eb66f8844}{%
+           family={Schettler},
+           familyi={S\bibinitperiod},
+           given={P.\bibnamedelimi D.},
+           giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=f134a04c38442e3f6736e60d500cba87}{%
+           family={Giddings},
+           familyi={G\bibinitperiod},
+           given={J.\bibnamedelimi C.},
+           giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {ACS Publications}%
+      }
+      \strng{namehash}{68488b630c627d165f33f782b61b9ecf}
+      \strng{fullhash}{68488b630c627d165f33f782b61b9ecf}
+      \strng{bibnamehash}{68488b630c627d165f33f782b61b9ecf}
+      \strng{authorbibnamehash}{68488b630c627d165f33f782b61b9ecf}
+      \strng{authornamehash}{68488b630c627d165f33f782b61b9ecf}
+      \strng{authorfullhash}{68488b630c627d165f33f782b61b9ecf}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Ind. Eng. Chem. Res.}
+      \field{number}{5}
+      \field{title}{New method for prediction of binary gas-phase diffusion coefficients}
+      \field{volume}{58}
+      \field{year}{1966}
+      \field{pages}{18\bibrangedash 27}
+      \range{pages}{10}
+    \endentry
     \entry{singularity}{misc}{}
       \name{author}{1}{}{%
         {{hash=c1f190a3d1b70d4cfa882bb01892fd64}{%
@@ -119,8 +291,8 @@
       \strng{authornamehash}{c1f190a3d1b70d4cfa882bb01892fd64}
       \strng{authorfullhash}{c1f190a3d1b70d4cfa882bb01892fd64}
       \field{extraname}{1}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://docs.sylabs.io/guides/main/user-guide.pdf}}
@@ -151,8 +323,8 @@
       \strng{authorbibnamehash}{47abe5de33a61592357422747357b53e}
       \strng{authornamehash}{47abe5de33a61592357422747357b53e}
       \strng{authorfullhash}{47abe5de33a61592357422747357b53e}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Job Scheduling Strategies for Parallel Processing}
@@ -174,8 +346,8 @@
       \strng{authornamehash}{c1f190a3d1b70d4cfa882bb01892fd64}
       \strng{authorfullhash}{c1f190a3d1b70d4cfa882bb01892fd64}
       \field{extraname}{2}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://docs.sylabs.io/guides/3.0/user-guide/installation.html}}

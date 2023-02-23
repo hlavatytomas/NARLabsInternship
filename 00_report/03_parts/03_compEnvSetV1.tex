@@ -19,7 +19,7 @@ Assuming you have super-user permission and singularity installed on local (see 
     \texttt{cd /tmp/test/} 
     \item New container (\texttt{./ubuntu}) can be built from ubuntu docker repository using:\\[0.2cm] 
     \texttt{sudo singularity build ----sandbox ./ubuntu docker://ubuntu:latest}\\[0.2cm] 
-    {NOTE:} \texttt{----sandbox} flag allows to write into container later
+    \textbf{Note:} \texttt{----sandbox} flag allows to write into container later
 \end{enumerate}
 
 Shell inside container can be opened using: \\[0.2cm]
@@ -50,6 +50,9 @@ When everything is installed, the \texttt{.sif} container file can be built from
 
 
 Following the above listed guideline, singularity container image \texttt{ubuntu.sif} is created. This can be uploaded to NCHC servers and used as described in following subsection. 
+
+\subsection{Developed OpenFOAMCase python class documentation}
+\label{subsec:ofCaseClass}
 
 \subsection{Preparation of Slurm control script and running the task}
 \label{subsec:slurmCtrl}
