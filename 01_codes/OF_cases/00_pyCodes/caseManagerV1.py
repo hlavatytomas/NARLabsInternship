@@ -75,8 +75,7 @@ hk1.changeOFCaseDir(finCsDir)
 hk1.copyBaseCase()
 # for replace in changes["replaces"]:
 hk1.replace(changes["replaces"])
-for setPar in changes["setPars"]:
-    hk1.setParameter(setPar)
+hk1.setParameter(changes["setPars"])
 
 
 # NOTE: not used for my PC
