@@ -72,18 +72,23 @@ As stated, the air flow and the spread of the pollution in the inhabited area is
  
 \begin{figure}[htpb]
     \begin{tikzpicture}
-        \node (obr) {\includegraphics[width=0.6\textwidth]{01_images/geometry/bc1.png}};
-        \node (inlet) at ([{shift={(0.05\linewidth,0-0.068\linewidth)}}]obr.north east) [draw,color=in,fill=in,minimum width=0.03\linewidth,minimum height=0.03\linewidth] {};
+        \node (obr) {\includegraphics[width=0.5\textwidth]{01_images/geometry/bc1.png}};
+        \node (inlet) at ([{shift={(0.05\linewidth,0-0.02\linewidth)}}]obr.north east) [draw,color=in,fill=in,minimum width=0.03\linewidth,minimum height=0.03\linewidth] {};
         \node [name=wall, at=(inlet.east),anchor=west]{{$\partial\Omega_{\mathrm{i}}$}};
         \node (outlet) at (inlet.south) [draw,color=out,fill=out,minimum width=0.03\linewidth,minimum height=0.03\linewidth,anchor=north,yshift=0-0.01\textwidth] {};
         \node[name=wall, at=(outlet.east),anchor=west]{{$\partial\Omega_{\mathrm{o}}$}};
         \node (ground) at (outlet.south) [draw,color=city,fill=city,minimum width=0.03\linewidth,minimum height=0.03\linewidth,anchor=north,yshift=0-0.01\textwidth] {};
         \node (ground2) at (ground.east) [draw,color=lw,fill=lw,minimum width=0.03\linewidth,minimum height=0.03\linewidth,anchor=west,xshift=0.01\textwidth] {};
-        \node[name=wall, at=(ground2.east),anchor=west]{{$\partial\Omega_{\mathrm{g}}$}};
+        \node[name=wall2, at=(ground2.east),anchor=west]{{$\partial\Omega_{\mathrm{g}}$}};
         \node (sides) at (ground.south) [draw,color=fb,fill=fb,minimum width=0.03\linewidth,minimum height=0.03\linewidth,anchor=north,yshift=0-0.01\textwidth] {};
         \node[name=wall, at=(sides.east),anchor=west]{{$\partial\Omega_{\mathrm{s}}$}};
         \node (top) at (sides.south) [draw,color=top,fill=top,minimum width=0.03\linewidth,minimum height=0.03\linewidth,anchor=north,yshift=0-0.01\textwidth] {};
         \node[name=wall, at=(top.east),anchor=west]{{$\partial\Omega_{\mathrm{t}}$}};
+        \node (pol) at (top.south) [draw,color=redpol,fill=redpol,minimum width=0.03\linewidth,minimum height=0.03\linewidth,anchor=north,yshift=0-0.01\textwidth] {};
+        \node[name=wall, at=(pol.east),anchor=west]{{$\partial\Omega_{\mathrm{pol}}$}};
+        \node (obr2) at (wall2.south east) [anchor=west,xshift=0.01\textwidth]{\includegraphics[width=0.25\textwidth]{01_images/geometry/bc2.png}};
+        \node at (obr.north west) [anchor=south west] {a)};
+        \node at (obr2.north west) [anchor=south west] {b)};
     \end{tikzpicture}
     \caption{Boundaries of the computational domain.}
     \label{fig:bc}
@@ -163,4 +168,4 @@ The above described mathematical model has several tunable parameters that can b
 
 The flow of the air at the common temperature of the $T\,=\,25\,^\circ$C has been assumed. The value of the gas kinematic viscosity has been calculated from Sutherland equation~\cite{sutherland1893} as $\nu$ = 1.53$\,\cdot\, 10^{-5}\,\mathrm{m^2\,s^{-1}}$, and the value of the pollution molar diffusivity from Fuller equation~\cite{fuller66} as $D$ = 1.72$\,\cdot\, 10^{-5}\,\mathrm{m^2\,s^{-1}}$.  As in~\cite{baik03}, the Schmidt number has been assumed constant and equal Sc$\,=\,0.9$.
 
-To complete the description of the prepared model, it remains to specify the inlet values of the velocity, and the turbulence intensity, and the value of the pollution molar fraction on the ground of the main road.\noteTH{finish    }
+To complete the description of the prepared model, it remains to specify the inlet values of the velocity, and the turbulence intensity, and the value of the pollution molar fraction on the ground of the main road (see $\partial\Omega_{\mathrm{pol}}$ in Figure~\ref{fig:bc}b on page~\pageref{fig:bc}). For the case of the tutorial example, we have prescribed $u_{\mathrm{in}}$ = 10\,$\mathrm{m\,s^{-1}}$, $I_\mathrm{i}$ = 5\,\%, and $y_{\mathrm{pol,\partial\Omega_{\mathrm{pol}}}}$ = 10\,\%.

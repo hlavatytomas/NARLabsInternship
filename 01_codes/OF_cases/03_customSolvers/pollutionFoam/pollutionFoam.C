@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
             (
                 fvm::ddt(yPol)
               + fvm::div(phi, yPol)
-              - fvm::laplacian(DT, yPol)
+              - fvm::laplacian(Dturb, yPol)
              ==
                 fvModels.source(yPol)
             );
