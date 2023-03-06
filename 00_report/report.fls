@@ -1926,6 +1926,11 @@ INPUT ./03_parts/04_expV1.tex
 INPUT 03_parts/04_expV1.tex
 INPUT ./03_parts/04_expV1.tex
 INPUT 03_parts/04_expV1.tex
+INPUT ./01_images/res/pUxFront.png
+INPUT ./01_images/res/pUxFront.png
+INPUT 01_images/res/pUxFront.png
+INPUT ./01_images/res/pUxFront.png
+INPUT ./01_images/res/pUxFront.png
 INPUT ./03_parts/05_conclV1.tex
 INPUT 03_parts/05_conclV1.tex
 INPUT ./03_parts/05_conclV1.tex
@@ -1935,10 +1940,6 @@ INPUT 03_parts/06_nomenV1.tex
 INPUT ./03_parts/06_nomenV1.tex
 INPUT 03_parts/06_nomenV1.tex
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmcsc10.tfm
-INPUT ./03_parts/ZZ_appendixV1.tex
-INPUT 03_parts/ZZ_appendixV1.tex
-INPUT ./03_parts/ZZ_appendixV1.tex
-INPUT 03_parts/ZZ_appendixV1.tex
 INPUT report.aux
 INPUT ./report.out
 INPUT ./report.out
@@ -1948,7 +1949,6 @@ INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc
-INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb
 INPUT /usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb

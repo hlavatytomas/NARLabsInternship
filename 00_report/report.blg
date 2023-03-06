@@ -1,24 +1,24 @@
 [0] Config.pm:307> INFO - This is Biber 2.17
 [0] Config.pm:310> INFO - Logfile is 'report.blg'
-[53] biber:340> INFO - === Wed Feb 22, 2023, 12:55:42
-[63] Biber.pm:418> INFO - Reading 'report.bcf'
-[108] Biber.pm:972> INFO - Found 10 citekeys in bib section 0
-[118] Biber.pm:4383> INFO - Processing section 0
-[125] Biber.pm:4574> INFO - Looking for bibtex file './10_bibFiles/books.bib' for section 0
-[126] bibtex.pm:1713> INFO - LaTeX decoding ...
-[132] bibtex.pm:1518> INFO - Found BibTeX data source './10_bibFiles/books.bib'
-[133] Biber.pm:4574> INFO - Looking for bibtex file './10_bibFiles/references.bib' for section 0
-[136] bibtex.pm:1713> INFO - LaTeX decoding ...
-[211] bibtex.pm:1518> INFO - Found BibTeX data source './10_bibFiles/references.bib'
-[296] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
-[296] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[296] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-GB'
-[297] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-GB'
-[302] bbl.pm:654> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[306] bbl.pm:757> INFO - Output to report.bbl
-[306] Biber.pm:130> WARN - Possible typo (case mismatch) between citation and datasource keys: 'moukalled16' and 'Moukalled16' in file './10_bibFiles/books.bib'
-[306] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'moukalled16' and 'Moukalled16' in file './10_bibFiles/references.bib'
-[306] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'ferziger02' and 'Ferziger02' in file './10_bibFiles/references.bib'
-[306] Biber.pm:130> WARN - Duplicate entry key: 'roenby16' in file './10_bibFiles/references.bib', skipping ...
-[306] Biber.pm:130> WARN - Duplicate entry key: 'roenby17' in file './10_bibFiles/references.bib', skipping ...
-[306] Biber.pm:132> INFO - WARNINGS: 5
+[81] biber:340> INFO - === Thu Mar  2, 2023, 17:58:27
+[96] Biber.pm:418> INFO - Reading 'report.bcf'
+[149] Biber.pm:972> INFO - Found 10 citekeys in bib section 0
+[159] Biber.pm:4383> INFO - Processing section 0
+[167] Biber.pm:4574> INFO - Looking for bibtex file './10_bibFiles/books.bib' for section 0
+[168] bibtex.pm:1713> INFO - LaTeX decoding ...
+[174] bibtex.pm:1518> INFO - Found BibTeX data source './10_bibFiles/books.bib'
+[175] Biber.pm:4574> INFO - Looking for bibtex file './10_bibFiles/references.bib' for section 0
+[178] bibtex.pm:1713> INFO - LaTeX decoding ...
+[261] bibtex.pm:1518> INFO - Found BibTeX data source './10_bibFiles/references.bib'
+[347] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
+[348] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[348] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-GB'
+[348] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-GB'
+[353] bbl.pm:654> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[358] bbl.pm:757> INFO - Output to report.bbl
+[358] Biber.pm:130> WARN - Possible typo (case mismatch) between citation and datasource keys: 'moukalled16' and 'Moukalled16' in file './10_bibFiles/books.bib'
+[358] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'moukalled16' and 'Moukalled16' in file './10_bibFiles/references.bib'
+[358] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'ferziger02' and 'Ferziger02' in file './10_bibFiles/references.bib'
+[358] Biber.pm:130> WARN - Duplicate entry key: 'roenby16' in file './10_bibFiles/references.bib', skipping ...
+[358] Biber.pm:130> WARN - Duplicate entry key: 'roenby17' in file './10_bibFiles/references.bib', skipping ...
+[358] Biber.pm:132> INFO - WARNINGS: 5

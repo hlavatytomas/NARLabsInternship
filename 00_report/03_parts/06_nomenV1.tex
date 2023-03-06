@@ -1,64 +1,35 @@
 \cleardoublepage
-\section{Nomenclature}
+\subsection*{Nomenclature}
+\label{sec:nomen}
 
-\begin{longtable}{lp{0.1\textwidth}l}
-    $c_i$ & \dotfill & Molar concentration of $i$-th molar specie\\
-    $c_{\mathrm{T}}$ & \dotfill & Total molar concentration\\
-    $\Co$ & \dotfill & Courant number\\
-    $d$ & \dotfill & Diameter\\
-    $D_i$ & \dotfill & Molar diffusivity of $i$-th molar specie\\
-    $D_i^{\mathrm{eff}}$ & \dotfill & Effective molar diffusivity of $i$-th molar specie\\
-    $\bm{d}_{\mathrm{PN}}$ & \dotfill & Vector connecting centroids of P and N\\
-    $f$&\dotfill & Face of the cell\\
-    $\bm{f}_b$&\dotfill & Body forces acting on cell\\
-    $\bm{g}$ & \dotfill & Gravitational acceleration\\
-    $h$ & \dotfill & Specific enthalpy\\
-    $I$ & \dotfill & Time interval\\
-    $I^h$ & \dotfill & Discretized time interval\\
-    ${m}$&\dotfill & Number of discretized FV cells\\
-    ${M}$&\dotfill & Molar mass\\
-    ${n}$&\dotfill & Number of species\\
-    $\bm{n}$&\dotfill & Outer normal vector\\
-    $\bm{n}_f$&\dotfill & Outer normal vector of the face $f$\\
-    ${p}$ &\dotfill & Pressure\\
-    ${p_{\mathrm{ref}}}$ &\dotfill & Reference pressure\\
-    $\tilde{p}$ & \dotfill & Kinematic pressure\\
-    $Q$ & \dotfill & Computational domain\\
-    $r_i$ & \dotfill & Reaction source of the $i$-th molar specie\\
-    $\mathrm{R^g}$ & \dotfill & Universal gas constant\\
-    $\Rey$ & \dotfill & Reynolds number\\
-    ${s}_{\phi}$ &\dotfill & Source of the $\phi$\\
-    $\bm{S}_{f}$ & \dotfill & Face area vector\\
-    $t$ &\dotfill & Time\\
-    $T$ &\dotfill & Temperature\\
-    ${T_{\mathrm{ref}}}$ &\dotfill & Reference temperature\\
-    $\bm{u} = (u,v,w)$&\dotfill & Velocity\\
-    $y_i$&\dotfill & Molar fraction of the $i$-molar specie\\
-    $\alpha$  &\dotfill & Heat transfer coefficient\\
-    $\varepsilon$  &\dotfill & Porosity\\
-    $\Gamma_\phi$  &\dotfill & Diffusivity of $\phi$\\
-    $\kappa$  &\dotfill & Permeability\\
-    $\lambda$  &\dotfill & Heat conductivity\\
-    $\mu$ &\dotfill & Dynamic viscosity\\
-    $\nu$ &\dotfill & Kinematic viscosity\\
-    $\Omega$ &\dotfill & Domain\\
-    $\Omega^h$ & \dotfill & Discretized domain\\
-    $\Omega^h_P$ & \dotfill & Cell $P$\\
-    $\delta\Omega^h_i$ & \dotfill & Volume of the cell\\
-    $\partial\Omega$ &\dotfill & Domain boundary\\
-    $\phi$ &\dotfill & Intensive tensorial quantity\\
-    $\phi_P$ &\dotfill & Value of $\phi$ in the cell centroid of cell $P$\\
-    $\phi_f$ &\dotfill & Value of $\phi$ in the face centroid of face $f$\\
-    $\bm{\Phi}_{\phi}$&\dotfill & Flux intensity of $\phi$\\
-    $\bm{\Phi}_{\phi,\mathrm{conv}}$&\dotfill & Convective flux intensity of $\phi$\\
-    $\bm{\Phi}_{\phi,\mathrm{diff}}$&\dotfill & Diffusive flux intensity of $\phi$\\
-    $\rho$ &\dotfill & Fluid mass density\\
-    $\Sigma$ &\dotfill & Total stress tensor\\
-    $\tau$  &\dotfill & Tortuosity\\
-    $\bm{\tau}$ &\dotfill & Viscous stress tensor\\
-    $\nabla$&\dotfill & Nabla differential operator\\
+\begin{tabular}{ll}
+$D$ & molar diffusivity, $\mathrm{m^2\,s^{-1}}$ \\
+$D_{\mathrm{t}}$ & turbulent molar diffusivity, $\mathrm{m^2\,s^{-1}}$ \\
+$k$ & turbulent kinetic energy, $\mathrm{m^2\,s^{-2}}$ \\
+$L$ & length, $\mathrm{m}$ \\
+$p$ & pressure, $\mathrm{Pa}$ \\
+$\bm{u} = (u_x, u_y, u_z)^\intercal$ & velocity, $\mathrm{(m\,s^{-1},m\,s^{-1},m\,s^{-1})}$ \\
+$\mathrm{Sc}$ & Schmidt number, $\mathrm{1}$ \\
+${T}$ & temperature, $\mathrm{1}$ \\
+$y_{\mathrm{P}}$ & molar fraction of the polluting gas, $\mathrm{1}$ \\
+\end{tabular}
 
-\end{longtable}    
+\subsubsection*{Greek letters}
+\begin{tabular}{ll}
+$\varepsilon$ & turbulent kinetic energy dissipation rate, $\mathrm{m^2\,s^{-3}}$\\
+$\nu$ & kinematic viscosity, $\mathrm{m^2\,s^{-1}}$\\
+$\nu_{\mathrm{t}}$ & turbulent kinematic viscosity, $\mathrm{m^2\,s^{-1}}$\\
+$\Omega = (x,y,z)^\intercal$ & computational domain, $\mathrm{(m,m,m)}$\\
+$\partial\Omega$ & computational domain boundary, $\mathrm{(m,m,m)}$\\
+\end{tabular}
 
-
-% section nomen (end)
+\subsubsection*{Subscripts and superscripts}
+\begin{tabular}{ll}
+$\mathrm{d}$ & downwind \\
+$\mathrm{g}$ & ground \\
+$\mathrm{h}$ & height \\
+$\mathrm{s}$ & sides \\
+$\mathrm{o}$ & outlet \\
+$\mathrm{t}$ & top \\
+$\mathrm{u}$ & upwind \\
+\end{tabular}

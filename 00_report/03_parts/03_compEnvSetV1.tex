@@ -19,7 +19,7 @@ Assuming you have super-user permission and singularity installed on local (see 
     \texttt{cd /tmp/test/} 
     \item New container (\texttt{./ubuntu}) can be built from ubuntu docker repository using:\\[0.2cm] 
     \texttt{sudo singularity build ----sandbox ./ubuntu docker://ubuntu:latest}\\[0.2cm] 
-    \textbf{Note:} \texttt{----sandbox} flag allows to write into container later
+    \textbf{Note:} \texttt{----sandbox} flag allows to write into container later.
 \end{enumerate}
 
 Shell inside container can be opened using: \\[0.2cm]
@@ -42,18 +42,142 @@ Compilation of the custom solver inside container is done as follows:
     \item Navigate to solver folder, e.g.:\\[0.2cm] 
     \indent\quad\quad\texttt{cd /tmp/pollutionFoam} 
     \item Compile solver executing: \\[0.2cm] 
-    \indent\quad\quad\texttt{wmake}.
+    \indent\quad\quad\texttt{wmake}
 \end{enumerate}
 
 When everything is installed, the \texttt{.sif} container file can be built from prepared \texttt{/tmp/test/ubuntu} directory using:\\[0.2cm] 
 \indent\quad\quad\texttt{sudo singularity build /tmp/test/ubuntu.sif /tmp/test/ubuntu/}
 
-
 Following the above listed guideline, singularity container image \texttt{ubuntu.sif} is created. This can be uploaded to NCHC servers and used as described in following subsection. 
 
-\subsection{Developed OpenFOAMCase python class documentation}
-\label{subsec:ofCaseClass}
-
-\subsection{Preparation of Slurm control script and running the task}
+\subsection{Preparation of Slurm control script and running the tasks}
 \label{subsec:slurmCtrl}
+The slurm control script uses bash and the example (\texttt{taiw3SlurmRunV2.sh}) can look as follows:
+\begin{verbatim}
+    #!/bin/bash
+    #SBATCH -J testOF10                 # name of the task
+    #SBATCH -p ct56                     # partition (see sinfo)
+    #SBATCH -t 12:00:00                 # needed time to run
+    #SBATCH --account=GOV109092         # computing resource wallet ID
+    #SBATCH --ntasks=12                 # (-n) Number of MPI processes
 
+    # -- Slurm script to run simulations on Taiwania 3
+
+    # -- load singularity
+    module load libs/singularity
+
+    # -- run python control
+    cd ../00_pyCodes
+    python3 -u caseManagerV1.py
+\end{verbatim}
+
+The created Slurm job can be added to the front by:\\[0.2cm]
+\indent\quad\quad\texttt{sbatch taiw3SlurmRunV2.sh}
+
+Note that the setup and the control of the OpenFOAM simulation is ensured by the custom developed OpenFOAMCase class described in the next subsection.
+
+\subsection{Developed OpenFOAMCase python class}
+\label{subsec:ofCaseClass}
+To easily control the OpenFOAM simulations, the custom python class OpenFOAMCase has been developed. This class allows to copy OpenFOAM base folder to specified directory, easily modify dictionaries and run the OpenFOAM utilities.
+
+The class is stored in \texttt{01\_codes/OF\_cases/00\_pyCodes/OF\_caseClass.py}, and in the same folder also the python control script that is run by Slurm job can be found (\texttt{caseManagerV1.py}), whose shorten example version is given also here:
+\begin{verbatim}
+# -- Python script to create and manage OpenFoam cases
+
+# -- imports 
+from OF_caseClass import OpenFOAMCase
+
+# -- paths 
+bsCsDir = "../01_baseCaseV2"        # base case directory
+finCsDir = "../ZZ_cases/testRunV1"  # where to copy base directory and work
+singularityFl = "~/Singularity/ubuntu3.sif"       # singularity file
+
+# -- dictionaries parameters
+DOMAIN_SIZE_X = 500*11
+DOMAIN_SIZE_Y = 270*2
+REF_LEVEL_VELKY_BOX = 2
+endTime1 = 500
+pRelax1 = 0.005
+defDivSch = "bounded Gauss SFCD"
+
+# -- create OpenFOAMCase object and copy base directory to working directory
+testCase = OpenFOAMCase()
+testCase.loadOFCaseFromBaseCase(bsCsDir)
+testCase.changeOFCaseDir(finCsDir)
+testCase.copyBaseCase()
+
+# -- replace the parameters in the dictionaries
+testCase.replace(
+    [
+        [
+            "system/blockMeshDict",                   # in file
+            ["DOMAIN_SIZE_X", "DOMAIN_SIZE_Y"],       # list of what to replace
+            [str(DOMAIN_SIZE_X), str(DOMAIN_SIZE_Y)]  # list of by to replace
+        ],
+        [
+            "system/snappyHexMeshDict", 
+            ["REF_LEVEL_VELKY_BOX"], 
+            [str(REF_LEVEL_VELKY_BOX)]
+        ],
+    ]
+)
+
+# -- set the parameters in the dictionaries 
+testCase.setParameter(
+    [
+        [
+            "system/fvSolution",                      # in file 
+            "p ",                                     # set parameter
+            str(pRelax1),                             # to value
+            "fields"                                  # in subdictionary
+        ],        
+        ["system/fvSchemes", "default", defDivSch, "divSchemes"],
+        ["system/controlDict", "endTime", str(endTime1), ""],
+    ]
+)
+
+# -- run command in the working directory using prepared singularity container
+testCase.runCommands (
+    [
+        # -- change permissions
+        "chmod 775 -R ./*",
+        # -- run ''geometry'' bash script in the working directory
+        "singularity exec -H %s/%s %s bash ./geometry" 
+            % (hk1.whereIStart, hk1.dir, singularityFl),
+        # -- run ''simulationFlow'' script in the working directory
+        "singularity exec -H %s/%s %s bash ./simulationFlow"
+            % (hk1.whereIStart, hk1.dir, singularityFl),
+    ]
+) 
+
+... to be continued with the pollution simulation
+\end{verbatim}
+
+The above python class simplifies the control of the OpenFOAM simulations, the only thing that remains unanswered is the form of the \texttt{geometry}, \texttt{simulationFlow}, and other bash scripts. The example is given below:
+\begin{verbatim}
+#!/bin/sh
+
+# -- script to create geometry of the case
+
+# -- run from here
+cd ${0%/*} || exit 1
+
+# -- source OpenFOAM installed in the singularity container
+. /opt/openfoam10/etc/bashrc
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+# -- copy the initial guess and boundary conditions
+cp -r 0.org 0
+
+# -- blockMesh
+runApplication blockMesh
+
+# -- creation of the .OpenFOAM file for paraview
+paraFoam -touch
+
+# -- decomposePar and snappyHexMesh
+runApplication decomposePar -copyZero
+runParallel snappyHexMesh -overwrite
+\end{verbatim} 
+
+This tutorial demonstrates the usage of the developed framework to control OpenFOAM simulations on the NCHC clusters. Note that all the control scripts are part of the public repository \texttt{https://github.com/hlavatytomas/NARLabsInternship.git}.
