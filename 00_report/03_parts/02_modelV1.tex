@@ -94,11 +94,11 @@ As stated, the air flow and the spread of the pollution in the inhabited area is
     \label{fig:bc}
 \end{figure}
 
-Used boundary conditions are utilized from~\cite{kadaverugu21,Pantusheva22} and summarized in Table~\ref{tab:bc}. Starting with flow variables, uniform Dirichlet (\textit{fixedValue}), and OpenFOAM inletOutlet boundary conditions are prescribed for velocity ($\bm{u}$) at $\Omega_{\mathrm{i}}$, and $\Omega_{\mathrm{o}}$, respectively. At $\Omega_{\mathrm{g}}$, we standardly assume \textit{noSlip} boundary condition, and finally the sides of the geometry ($\Omega_{\mathrm{s}}$ and $\Omega_{\mathrm{t}}$) are treated as the symmetry (\textit{slip}). This setting is supplemented with OpenFOAM \textit{totalPressure} boundary condition for pressure ($p$) at $\Omega_{\mathrm{o}}$, and zeroGradient (\textit{zeroGrad}) elsewhere. 
+Used boundary conditions are utilized from~\cite{kadaverugu21,Pantusheva22} and summarized in Table~\ref{tab:bc}. Starting with flow variables, uniform Dirichlet (\textit{fixedValue}), and OpenFOAM inletOutlet boundary conditions are prescribed for velocity ($\bm{u}$) at $\Omega_{\mathrm{i}}$, and $\Omega_{\mathrm{o}}$, respectively. At $\Omega_{\mathrm{g}}$, we standardly assume \textit{noSlip} boundary condition, and finally the sides of the geometry ($\Omega_{\mathrm{s}}$ and $\Omega_{\mathrm{t}}$) are treated as symmetry (\textit{slip}). This setting is supplemented with OpenFOAM \textit{totalPressure} boundary condition for pressure ($p$) at $\Omega_{\mathrm{o}}$, and zeroGradient (\textit{zeroGrad}) elsewhere. 
 
 As described in the later subsection, $k-\varepsilon$ turbulence model is used to estimate unresolved eddy dissipation. The turbulence model requires specification of the boundary conditions for turbulent kinetic energy ($k$), rate of dissipation of the turbulent kinetic energy ($\varepsilon$), and the turbulent viscosity ($\nu_{\mathrm{t}}$). At $\Omega_{\mathrm{i}}$, we use OpenFOAM turbulentIntensityKineticEnergyInlet (\textit{turbIntKinEngInlet}), and turbulentMixingLengthDissipationRateInlet (\textit{turbMixDissRateInlet}) boundary conditions, which calculate the inlet $k$ and $\varepsilon$, respectively, based on specified value of the inlet turbulence intensity $I_{\mathrm{i}}$. At the $\Omega_{\mathrm{g}}$, standard wall functions are utilized \textit{kqRWallFunction}, \textit{epsWallFunction}, and \textit{nutkWallFunction}, in order for $k$, $\varepsilon$, and $\nu_{\mathrm{t}}$. And finally, \textit{zeroGrad} boundary condition is prescribed elsewhere.
 
-Scalar transport equation describing the spreading of the pollution $y_{\mathrm{P}}$ is supplied with the \textit{fixedValue} boundary condition at $\Omega_{\mathrm{g}}$, defining the source of the pollution on the main road, and \textit{zeroGrad} boundary condition elsewhere.
+Scalar transport equation, which describes the spreading of the pollution $y_{\mathrm{P}}$, is supplied with the \textit{fixedValue} boundary condition at $\Omega_{\mathrm{g}}$, defining the source of the pollution on the main road, and \textit{zeroGrad} boundary condition elsewhere.
 
 \begin{table}[htbp]
     \caption{Used boundary conditions.}
@@ -140,32 +140,32 @@ where $\nu$ is the gas kinematic viscosity, and $\nu_{\mathrm{t}}$ is the turbul
 In general, there exist numerous various approaches of $\nu_{\mathrm{t}}$ estimation. In the present work, the OpenFOAM variant of $k-\varepsilon$ turbulence model is used to calculate the turbulent eddy viscosity as,
 \begin{equation}
     \label{eq:nut}
-    \nu_{\mathrm{t}} = \frac{k}{\varepsilon}\,,
+    \nu_{\mathrm{t}} = C_{\nu}\,\frac{k^2}{\varepsilon}\,,
 \end{equation}
-where $k$, and $\varepsilon$ are the turbulence kinetic energy, and its rate of the dissipation, respectively. For more information on the calculation of the $k$ and $\varepsilon$, see e.g.~\cite{moukalled16,launder1974}.
+where $k$, and $\varepsilon$ are the turbulence kinetic energy, and its rate of the dissipation, respectively, and $C_{\nu}$ is model coefficient. For more information on the calculation of the $k$ and $\varepsilon$ see e.g.~\cite{moukalled16,launder1974}.
 
 \paragraph{Pollution transport governing equation} Assuming constant mass density, the transient dispersion of the polluting gas in the carrier gas can be estimated employing standard scalar variable transport equation in a form,
 \begin{equation}
     \label{eq:scTr}
     \frac{\partial (y_{\mathrm{P}})}{\partial t} + \nabla\cdot(\bm{u}\, y_{\mathrm{P}}) - \nabla\cdot((D\,+\,D_{\mathrm{t}}) \nabla y_{\mathrm{P}}) = 0\,,
 \end{equation}
-where $\bm{u}$ is the mean-time velocity obtain from solution of~(\ref{eq:RANS1},\ref{eq:RANS2}), $y_{\mathrm{P}}$ is the molar fraction of the polluting gas, $t$ is time, and $D$ and $D_{\mathrm{t}}$ are in order molar and turbulent diffusivities of the polluting gas. Remark that no source of the pollution is assumed on the right hand side of the equation~\eqref{eq:scTr}, as the source of the pollution is ensured by proper application of the boundary conditions.
+where $\bm{u}$ is the mean-time velocity obtain from solution of~(\ref{eq:RANS1},\ref{eq:RANS2}), $y_{\mathrm{P}}$ is the molar fraction of the polluting gas, $t$ is time, and $D$ and $D_{\mathrm{t}}$ are in order molar and turbulent diffusivities of the polluting gas. Remark that no source of the pollution is assumed on the right hand side of the equation~\eqref{eq:scTr}. The source of the pollution is ensured by proper application of the boundary conditions on $\Omega_{\mathrm{g}}$.
 
 Furthermore, the turbulent diffusivity, $D_{\mathrm{t}}$, is calculated using Schmidt number (Sc) defined as, 
 \begin{equation}
     \label{eq:Sc}
     \mathrm{Sc} = \frac{\nu + \nu_{\mathrm{t}}}{D + D_{t}}\,,
 \end{equation}
-where $\nu + \nu_{\mathrm{t}}$ are the gas kinematic and the turbulent viscosities, respectively. Note that a standard assumption of the constant Schmidt number is adopted~\cite{baik03}, and $\nu_{\mathrm{t}}$ is estimated from from~\eqref{eq:nut}.
+where $\nu, \nu_{\mathrm{t}}$ are the gas kinematic and the turbulent viscosities, respectively. Note that a standard assumption of the constant Schmidt number is adopted~\cite{baik03}, and $\nu_{\mathrm{t}}$ is calculated from from~\eqref{eq:nut}.
 
 \subsection{Model parameters}
 \label{subsec:modPars}
 The above described mathematical model has several tunable parameters that can be split into two groups,
 \begin{inparaenum}[(i)]
     \item thermophysical parameters of the flowing gas, and
-    \item boundary conditions
+    \item boundary conditions.
 \end{inparaenum}
 
-The flow of the air at the common temperature of the $T\,=\,25\,^\circ$C has been assumed. The value of the gas kinematic viscosity has been calculated from Sutherland equation~\cite{sutherland1893} as $\nu$ = 1.53$\,\cdot\, 10^{-5}\,\mathrm{m^2\,s^{-1}}$, and the value of the pollution molar diffusivity from Fuller equation~\cite{fuller66} as $D$ = 1.72$\,\cdot\, 10^{-5}\,\mathrm{m^2\,s^{-1}}$.  As in~\cite{baik03}, the Schmidt number has been assumed constant and equal Sc$\,=\,0.9$.
+The flow of the air at the common temperature of the $T\,=\,25\,^\circ$C has been assumed. The value of the gas kinematic viscosity has been calculated from Sutherland equation~\cite{sutherland1893} as $\nu$ = 1.53$\,\cdot\, 10^{-5}\,\mathrm{m^2\,s^{-1}}$, and the value of the pollution molar diffusivity from Fuller equation~\cite{fuller66} as $D$ = 1.72$\,\cdot\, 10^{-5}\,\mathrm{m^2\,s^{-1}}$.  Similarly as in~\cite{baik03}, the Schmidt number has been assumed constant and equal Sc$\,=\,0.9$.
 
 To complete the description of the prepared model, it remains to specify the inlet values of the velocity, and the turbulence intensity, and the value of the pollution molar fraction on the ground of the main road (see $\partial\Omega_{\mathrm{pol}}$ in Figure~\ref{fig:bc}b on page~\pageref{fig:bc}). For the case of the tutorial example, we have prescribed $u_{\mathrm{in}}$ = 10\,$\mathrm{m\,s^{-1}}$, $I_\mathrm{i}$ = 5\,\%, and $y_{\mathrm{pol,\partial\Omega_{\mathrm{pol}}}}$ = 10\,\%.

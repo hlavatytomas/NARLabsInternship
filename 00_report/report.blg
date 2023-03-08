@@ -1,24 +1,24 @@
 [0] Config.pm:307> INFO - This is Biber 2.17
-[0] Config.pm:310> INFO - Logfile is 'report.blg'
-[47] biber:340> INFO - === Mon Mar  6, 2023, 09:42:42
-[57] Biber.pm:418> INFO - Reading 'report.bcf'
-[101] Biber.pm:972> INFO - Found 13 citekeys in bib section 0
-[110] Biber.pm:4383> INFO - Processing section 0
-[118] Biber.pm:4574> INFO - Looking for bibtex file './10_bibFiles/books.bib' for section 0
-[119] bibtex.pm:1713> INFO - LaTeX decoding ...
-[126] bibtex.pm:1518> INFO - Found BibTeX data source './10_bibFiles/books.bib'
-[136] Biber.pm:4574> INFO - Looking for bibtex file './10_bibFiles/references.bib' for section 0
-[139] bibtex.pm:1713> INFO - LaTeX decoding ...
-[208] bibtex.pm:1518> INFO - Found BibTeX data source './10_bibFiles/references.bib'
-[305] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[305] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
-[305] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-GB'
-[305] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-GB'
-[311] bbl.pm:654> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[317] bbl.pm:757> INFO - Output to report.bbl
-[317] Biber.pm:130> WARN - Possible typo (case mismatch) between citation and datasource keys: 'moukalled16' and 'Moukalled16' in file './10_bibFiles/books.bib'
-[317] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'moukalled16' and 'Moukalled16' in file './10_bibFiles/references.bib'
-[317] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'ferziger02' and 'Ferziger02' in file './10_bibFiles/references.bib'
-[317] Biber.pm:130> WARN - Duplicate entry key: 'roenby16' in file './10_bibFiles/references.bib', skipping ...
-[317] Biber.pm:130> WARN - Duplicate entry key: 'roenby17' in file './10_bibFiles/references.bib', skipping ...
-[318] Biber.pm:132> INFO - WARNINGS: 5
+[1] Config.pm:310> INFO - Logfile is 'report.blg'
+[86] biber:340> INFO - === Wed Mar  8, 2023, 14:18:38
+[107] Biber.pm:418> INFO - Reading 'report.bcf'
+[201] Biber.pm:972> INFO - Found 13 citekeys in bib section 0
+[221] Biber.pm:4383> INFO - Processing section 0
+[233] Biber.pm:4574> INFO - Looking for bibtex file './10_bibFiles/books.bib' for section 0
+[235] bibtex.pm:1713> INFO - LaTeX decoding ...
+[246] bibtex.pm:1518> INFO - Found BibTeX data source './10_bibFiles/books.bib'
+[247] Biber.pm:4574> INFO - Looking for bibtex file './10_bibFiles/references.bib' for section 0
+[252] bibtex.pm:1713> INFO - LaTeX decoding ...
+[354] bibtex.pm:1518> INFO - Found BibTeX data source './10_bibFiles/references.bib'
+[570] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[571] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
+[571] Biber.pm:4203> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-GB'
+[571] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-GB'
+[585] bbl.pm:654> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[596] bbl.pm:757> INFO - Output to report.bbl
+[597] Biber.pm:130> WARN - Possible typo (case mismatch) between citation and datasource keys: 'moukalled16' and 'Moukalled16' in file './10_bibFiles/books.bib'
+[598] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'moukalled16' and 'Moukalled16' in file './10_bibFiles/references.bib'
+[598] Biber.pm:130> WARN - Possible typo (case mismatch) between datasource keys: 'ferziger02' and 'Ferziger02' in file './10_bibFiles/references.bib'
+[598] Biber.pm:130> WARN - Duplicate entry key: 'roenby16' in file './10_bibFiles/references.bib', skipping ...
+[598] Biber.pm:130> WARN - Duplicate entry key: 'roenby17' in file './10_bibFiles/references.bib', skipping ...
+[598] Biber.pm:132> INFO - WARNINGS: 5

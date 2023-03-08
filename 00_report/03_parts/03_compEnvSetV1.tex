@@ -1,30 +1,29 @@
-\cleardoublepage
 \section{Computational environment}
 \label{sec:env}
 
 NCHC servers use Singularity container platform~\cite{singularity} and Slurm workload manager~\cite{slurm} to run user-defined tasks. Thus,  
 \begin{enumerate}[(i)]
-    \item custom singularity container, which includes necessary packages installed and compiled inside, is prepared, and
+    \item custom Singularity container, which includes necessary packages installed and compiled inside, is prepared, and
     \item Slurm task (which runs within the container) is prepared and run at the computational server.
 \end{enumerate}
 
-\subsection{Preparation of the singularity container}
+\subsection{Preparation of the Singularity container}
 \label{subsec:prepCont}
 
-Assuming you have super-user permission and singularity installed on local (see step-by-step guide in \cite{singularityInstall}), a preparation of the singularity container image from docker ubuntu:latest release can be done as follows: 
+Assuming you have super-user permission and Singularity installed on local computer (see step-by-step guide in \cite{singularityInstall}), a preparation of the Singularity container image from docker ubuntu:latest release can be done as follows: 
 \begin{enumerate}
     \item Navigate outside the home directory and work here, e.g.: \\[0.2cm] 
     \texttt{mkdir /tmp/} \\[0.2cm] 
     \texttt{mkdir /tmp/test} \\[0.2cm] 
     \texttt{cd /tmp/test/} 
     \item New container (\texttt{./ubuntu}) can be built from ubuntu docker repository using:\\[0.2cm] 
-    \texttt{sudo singularity build ----sandbox ./ubuntu docker://ubuntu:latest}\\[0.2cm] 
-    \textbf{Note:} \texttt{----sandbox} flag allows to write into container later.
+    \texttt{sudo singularity build -{}-sandbox ./ubuntu docker://ubuntu:latest}\\[0.2cm] 
+    \textbf{Note:} \texttt{-{}-sandbox} flag allows to write into container later.
 \end{enumerate}
 
 Shell inside container can be opened using: \\[0.2cm]
-\indent\quad\quad\texttt{sudo singularity shell ./ubuntu ----writable} \\[0.2cm]
-where \texttt{----writable} flag again allows to write into container and install packages here.
+\indent\quad\quad\texttt{sudo singularity shell -{}-writable ./ubuntu} \\[0.2cm]
+where \texttt{-{}-writable} flag again allows to write into container and install packages here.
 
 Openfoam.org/v10 and other used packages can be installed inside the container as:\\[0.2cm]
     \indent\quad\quad\texttt{apt update}\\[0.2cm]
@@ -38,17 +37,17 @@ Openfoam.org/v10 and other used packages can be installed inside the container a
 Compilation of the custom solver inside container is done as follows:
 \begin{enumerate}
     \item Source OpenFOAM in the container shell:\\[0.2cm] 
-    \indent\quad\quad\texttt{. /opt/openfoam10/etc/bashrc}
+    \texttt{. /opt/openfoam10/etc/bashrc}
     \item Navigate to solver folder, e.g.:\\[0.2cm] 
-    \indent\quad\quad\texttt{cd /tmp/pollutionFoam} 
+    \texttt{cd /tmp/pollutionFoam} 
     \item Compile solver executing: \\[0.2cm] 
-    \indent\quad\quad\texttt{wmake}
+    \texttt{wmake}
 \end{enumerate}
 
 When everything is installed, the \texttt{.sif} container file can be built from prepared \texttt{/tmp/test/ubuntu} directory using:\\[0.2cm] 
 \indent\quad\quad\texttt{sudo singularity build /tmp/test/ubuntu.sif /tmp/test/ubuntu/}
 
-Following the above listed guideline, singularity container image \texttt{ubuntu.sif} is created. This can be uploaded to NCHC servers and used as described in following subsection. 
+Following the above listed guideline, Singularity container image \texttt{ubuntu.sif} is created. This can be uploaded to NCHC servers and used as described in following subsection. 
 
 \subsection{Preparation of Slurm control script and running the tasks}
 \label{subsec:slurmCtrl}
@@ -66,7 +65,7 @@ The slurm control script uses bash and the example (\texttt{taiw3SlurmRunV2.sh})
     # -- load singularity
     module load libs/singularity
 
-    # -- run python control
+    # -- run python script which controls simulation
     cd ../00_pyCodes
     python3 -u caseManagerV1.py
 \end{verbatim}
@@ -78,9 +77,9 @@ Note that the setup and the control of the OpenFOAM simulation is ensured by the
 
 \subsection{Developed OpenFOAMCase python class}
 \label{subsec:ofCaseClass}
-To easily control the OpenFOAM simulations, the custom python class OpenFOAMCase has been developed. This class allows to copy OpenFOAM base folder to specified directory, easily modify dictionaries and run the OpenFOAM utilities.
+To easily control the OpenFOAM simulations, custom python class OpenFOAMCase has been developed. This class allows to copy OpenFOAM base folder to specified directory, easily modify dictionaries and run the OpenFOAM utilities.
 
-The class is stored in \texttt{01\_codes/OF\_cases/00\_pyCodes/OF\_caseClass.py}, and in the same folder also the python control script that is run by Slurm job can be found (\texttt{caseManagerV1.py}), whose shorten example version is given also here:
+The class is stored in \texttt{01\_codes/OF\_cases/00\_pyCodes/OF\_caseClass.py}, the same folder as python control script, which is run by Slurm job (\texttt{caseManagerV1.py}), is stored in. Shorten example version of the control script is also given here:
 \begin{verbatim}
 # -- Python script to create and manage OpenFoam cases
 
@@ -180,4 +179,4 @@ runApplication decomposePar -copyZero
 runParallel snappyHexMesh -overwrite
 \end{verbatim} 
 
-This tutorial demonstrates the usage of the developed framework to control OpenFOAM simulations on the NCHC clusters. Note that all the control scripts are part of the public repository \texttt{https://github.com/hlavatytomas/NARLabsInternship.git}.
+This tutorial demonstrates the usage of the developed framework to control OpenFOAM simulations on the NCHC clusters. Note that all the above described scripts are available as part of the public repository:\\[0.2cm] \indent\quad\quad\texttt{https://github.com/hlavatytomas/NARLabsInternship}
